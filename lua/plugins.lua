@@ -64,6 +64,7 @@ return require("packer").startup(
 		use {"kaicataldo/material.vim", opt = true}
 		use {"kyazdani42/nvim-web-devicons", opt = true}
 		use {"glepnir/galaxyline.nvim", opt = true}
+		use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"}
 		-- use {"romgrk/barbar.nvim", opt = true}
 		require_plugin("nvim-lspconfig")
 		require_plugin("lspsaga.nvim")
@@ -86,6 +87,7 @@ return require("packer").startup(
 		require_plugin("nvcode-color-schemes.vim")
 		require_plugin("nvim-web-devicons")
 		require_plugin("galaxyline.nvim")
+		require_plugin("neogit")
 		-- require_plugin("barbar.nvim")
 	end
 )
