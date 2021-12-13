@@ -32,7 +32,7 @@ O = {
 		-- @usage can be 'yapf', 'black'
 		formatter = '',
 		autoformat = false,
-		isort = fals,
+		isort = false,
 		diagnostics = {virtual_text = true, signs = true, underline = true}
 	},
 	dart = {sdk_path = '/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot'},
@@ -65,10 +65,10 @@ O = {
 		diagnostics = {virtual_text = true, signs = true, underline = true}
 	},
 	tailwindls = {filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}},
-	clang = { 
+	clang = {
 		diagnostics = {
-			virtual_text = true, 
-			signs = true, 
+			virtual_text = true,
+			signs = true,
 			underline = true
 		}
 	},

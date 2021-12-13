@@ -1,3 +1,4 @@
+vim.lsp.set_log_level("debug")
 -- Plugins
 require('plugins')
 
@@ -16,11 +17,11 @@ require('lv-compe')
 require('lv-dashboard')
 require('lv-galaxyline')
 require('lv-gitsigns')
+require('lv-neogit')
 require('lv-nvimtree')
 require('lv-rnvimr')
 require('lv-telescope')
 require('lv-treesitter')
---require('lv-neogit')
 
 -- Which Key (Hope to replace with Lua plugin someday)
 vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')

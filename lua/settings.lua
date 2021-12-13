@@ -12,7 +12,7 @@ vim.cmd('syntax on')
 vim.cmd('set colorcolumn=99999') -- fix indentline for now
 vim.cmd('set ts=4') -- Insert 2 spaces for a tab
 vim.cmd('set sw=2') -- Change the number of space characters inserted for indentation
---vim.cmd('set highlight EndOfBuffer ctermbg=333333 ctermfg=333333') -- Change the ≃ 
+--vim.cmd('set highlight EndOfBuffer ctermbg=333333 ctermfg=333333') -- Change the ≃
 
 -- Global options
 vim.g.material_theme_style = "ocean-community"
