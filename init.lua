@@ -1,4 +1,3 @@
-vim.lsp.set_log_level("debug")
 -- Plugins
 require('plugins')
 
@@ -54,3 +53,6 @@ require('lsp.tailwindcss-ls')
 require('lsp.ruby-ls')
 require('lsp.kotlin-ls')
 
+-- DAP
+require('dap.javascript-da-chrome')
+require('dap.php-da')

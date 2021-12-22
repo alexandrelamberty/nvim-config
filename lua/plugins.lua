@@ -35,8 +35,9 @@ return require("packer").startup(
 		use "wbthomason/packer.nvim"
 		-- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
 		use {"neovim/nvim-lspconfig", opt = true}
+		use {'williamboman/nvim-lsp-installer', opt = true}
 		use {"glepnir/lspsaga.nvim", opt = true}
-		use {"kabouzeid/nvim-lspinstall", opt = true}
+		-- use {"kabouzeid/nvim-lspinstall", opt = true}
 		-- Telescope
 		use {"nvim-lua/popup.nvim", opt = true}
 		use {"nvim-lua/plenary.nvim", opt = true}
@@ -67,8 +68,9 @@ return require("packer").startup(
 		use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"}
 		-- use {"romgrk/barbar.nvim", opt = true}
 		require_plugin("nvim-lspconfig")
+		require_plugin("nvim-lsp-installer")
 		require_plugin("lspsaga.nvim")
-		require_plugin("nvim-lspinstall")
+		-- require_plugin("nvim-lspinstall")
 		require_plugin("popup.nvim")
 		require_plugin("plenary.nvim")
 		require_plugin("telescope.nvim")
