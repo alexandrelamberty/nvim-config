@@ -1,4 +1,4 @@
-local utils = require('utils')
+local utils = require('eevos.utils')
 
 local auto_formatters = {            }
 

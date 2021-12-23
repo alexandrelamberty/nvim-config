@@ -31,16 +31,13 @@ vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when th
 
 return require("packer").startup(
 	function(use)
-		-- Packer can manage itself as an optional plugin
 		use "wbthomason/packer.nvim"
-		-- TODO refactor all of this (for now it works, but yes I know it could be wrapped in a simpler function)
+		use {"nvim-lua/popup.nvim", opt = true}
+		use {"nvim-lua/plenary.nvim", opt = true}
 		use {"neovim/nvim-lspconfig", opt = true}
 		use {'williamboman/nvim-lsp-installer', opt = true}
 		use {"glepnir/lspsaga.nvim", opt = true}
-		-- use {"kabouzeid/nvim-lspinstall", opt = true}
 		-- Telescope
-		use {"nvim-lua/popup.nvim", opt = true}
-		use {"nvim-lua/plenary.nvim", opt = true}
 		use {"nvim-telescope/telescope.nvim", opt = true}
 		-- Debugging
 		use {"mfussenegger/nvim-dap", opt = true}
@@ -51,26 +48,28 @@ return require("packer").startup(
 		-- Treesitter
 		use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 		use {"windwp/nvim-ts-autotag", opt = true}
-		-- Explorer
-		use "kyazdani42/nvim-tree.lua"
+		-- Explorer use "kyazdani42/nvim-tree.lua"
 		-- TODO remove when open on dir is supported by nvimtree
 		use "kevinhwang91/rnvimr"
-		-- use {'lukas-reineke/indent-blankline.nvim', opt=true, branch = 'lua'}
-		use {"lewis6991/gitsigns.nvim", opt = true}
-		use {"liuchengxu/vim-which-key", opt = true}
-		use {"ChristianChiarulli/dashboard-nvim", opt = true}
 		use {"windwp/nvim-autopairs", opt = true}
 		use {"terrortylor/nvim-comment", opt = true}
 		use {"kevinhwang91/nvim-bqf", opt = true}
+		-- Themes 	
 		use {"kaicataldo/material.vim", opt = true}
 		use {"kyazdani42/nvim-web-devicons", opt = true}
+		-- Features
+		use {"ChristianChiarulli/dashboard-nvim", opt = true}
+		use {"lewis6991/gitsigns.nvim", opt = true}
 		use {"glepnir/galaxyline.nvim", opt = true}
 		use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"}
+		use {"liuchengxu/vim-which-key", opt = true}
 		-- use {"romgrk/barbar.nvim", opt = true}
+		
+		-- TODO replace by pcall
 		require_plugin("nvim-lspconfig")
 		require_plugin("nvim-lsp-installer")
 		require_plugin("lspsaga.nvim")
-		-- require_plugin("nvim-lspinstall")
+		require_plugin("nvim-lspinstall")
 		require_plugin("popup.nvim")
 		require_plugin("plenary.nvim")
 		require_plugin("telescope.nvim")
@@ -90,6 +89,5 @@ return require("packer").startup(
 		require_plugin("nvim-web-devicons")
 		require_plugin("galaxyline.nvim")
 		require_plugin("neogit")
-		-- require_plugin("barbar.nvim")
 	end
 )
