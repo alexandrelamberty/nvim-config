@@ -1,3 +1,5 @@
+-- TODO: Explore more of what you could do
+-- Check augroups ???
 local utils = require('eevos.utils')
 
 local auto_formatters = {            }
@@ -18,6 +20,8 @@ if O.lua.autoformat then table.insert(auto_formatters, lua_format) end
 local json_format = {'BufWritePre', '*.json', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
 if O.json.autoformat then table.insert(auto_formatters, json_format) end
 
+
+-- TODO Check utils remove function and refactor this correctly
 utils.define_augroups({
     _general_settings = {
         {'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})'},

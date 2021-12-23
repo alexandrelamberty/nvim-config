@@ -34,6 +34,7 @@ return require("packer").startup(
 		use "wbthomason/packer.nvim"
 		use {"nvim-lua/popup.nvim", opt = true}
 		use {"nvim-lua/plenary.nvim", opt = true}
+		--- LSP
 		use {"neovim/nvim-lspconfig", opt = true}
 		use {'williamboman/nvim-lsp-installer', opt = true}
 		use {"glepnir/lspsaga.nvim", opt = true}
@@ -48,23 +49,22 @@ return require("packer").startup(
 		-- Treesitter
 		use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 		use {"windwp/nvim-ts-autotag", opt = true}
-		-- Explorer use "kyazdani42/nvim-tree.lua"
-		-- TODO remove when open on dir is supported by nvimtree
+		-- Explorer
+		use "kyazdani42/nvim-tree.lua"
 		use "kevinhwang91/rnvimr"
+		-- Utils
 		use {"windwp/nvim-autopairs", opt = true}
 		use {"terrortylor/nvim-comment", opt = true}
 		use {"kevinhwang91/nvim-bqf", opt = true}
-		-- Themes 	
+		-- Themes & Icons
 		use {"kaicataldo/material.vim", opt = true}
 		use {"kyazdani42/nvim-web-devicons", opt = true}
-		-- Features
 		use {"ChristianChiarulli/dashboard-nvim", opt = true}
 		use {"lewis6991/gitsigns.nvim", opt = true}
 		use {"glepnir/galaxyline.nvim", opt = true}
 		use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"}
 		use {"liuchengxu/vim-which-key", opt = true}
-		-- use {"romgrk/barbar.nvim", opt = true}
-		
+
 		-- TODO replace by pcall
 		require_plugin("nvim-lspconfig")
 		require_plugin("nvim-lsp-installer")

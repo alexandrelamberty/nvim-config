@@ -27,24 +27,24 @@ O = {
 	},
 
 	database = {save_location = '~/.config/nvcode_db', auto_execute = 1},
+	
 	python = {
-		linter = '',
+		linter = 'black',
 		-- @usage can be 'yapf', 'black'
 		formatter = '',
 		autoformat = false,
 		isort = false,
 		diagnostics = {virtual_text = true, signs = true, underline = true}
 	},
-	dart = {sdk_path = '/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot'},
 	lua = {
-		-- @usage can be 'lua-format'
-		formatter = '',
+		-- @usage can be 'lua-format' or 'lua-fmt'
+		formatter = 'lua-fmt',
 		autoformat = false,
 		diagnostics = {virtual_text = true, signs = true, underline = true}
 	},
 	sh = {
 		-- @usage can be 'shellcheck'
-		linter = '',
+		linter = 'shellcheck',
 		-- @usage can be 'shfmt'
 		formatter = '',
 		autoformat = false,
@@ -52,19 +52,21 @@ O = {
 	},
 	tsserver = {
 		-- @usage can be 'eslint'
-		linter = '',
+		linter = 'eslint',
 		-- @usage can be 'prettier'
-		formatter = '',
+		formatter = 'prettier',
 		autoformat = false,
 		diagnostics = {virtual_text = true, signs = true, underline = true}
 	},
 	json = {
 		-- @usage can be 'prettier'
-		formatter = '',
+		formatter = 'prettier',
 		autoformat = false,
 		diagnostics = {virtual_text = true, signs = true, underline = true}
 	},
-	tailwindls = {filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}},
+	tailwindls = {
+	  filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}
+	},
 	clang = {
 		diagnostics = {
 			virtual_text = true,
