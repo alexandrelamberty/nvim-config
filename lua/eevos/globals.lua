@@ -7,6 +7,7 @@ O = {
     number = true,
     relative_number = true,
     shell = 'bash',
+    database = {save_location = '~/.config/nvcode_db', auto_execute = 1},
 
     -- @usage pass a table with your desired languages
     treesitter = {
@@ -17,28 +18,26 @@ O = {
         rainbow = {enabled = false}
     },
 
-    database = {save_location = '~/.config/nvcode_db', auto_execute = 1},
-
     python = {
-        linter = 'black',
+        -- @usage can be flake8
+        linter = 'flake8',
         -- @usage can be 'yapf', 'black'
         formatter = '',
-        autoformat = false,
+        autoformat = true,
         isort = false,
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
     lua = {
         -- @usage can be 'lua-format' or 'lua-fmt'
         formatter = 'lua-fmt',
-        autoformat = false,
+        autoformat = true,
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
     sh = {
-        -- @usage can be 'shellcheck'
+        -- @usage can be 'shellcheck' or 'shfmt'
         linter = 'shellcheck',
-        -- @usage can be 'shfmt'
         formatter = '',
-        autoformat = false,
+        autoformat = true,
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
     tsserver = {
@@ -46,7 +45,7 @@ O = {
         linter = 'eslint',
         -- @usage can be 'prettier'
         formatter = 'prettier',
-        autoformat = false,
+        autoformat = true,
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },
     json = {
@@ -57,14 +56,16 @@ O = {
     },
     tailwindls = {filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}},
     clang = {diagnostics = {virtual_text = true, signs = true, underline = true}},
-    ruby = {diagnostics = {virtualtext = true, signs = true, underline = true}, filetypes = {'rb', 'erb', 'rakefile'}}
+    ruby = {diagnostics = {virtualtext = true, signs = true, underline = true}, filetypes = {'rb', 'erb', 'rakefile'}},
     -- css = {formatter = '', autoformat = false, virtual_text = true},
     -- json = {formatter = '', autoformat = false, virtual_text = true}
+    markdown = {
+        -- @usage can be 'prettier'
+        formatter = 'markdownlint',
+        autoformat = true,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    }
 }
-
-O.clang.diagnostics.virtual_text = false
-O.clang.diagnostics.signs = false
-O.clang.diagnostics.underline = false
 
 -- python
 -- add things like O.python.formatter.yapf.exec_path

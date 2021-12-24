@@ -1,4 +1,9 @@
+-- Debug Adapter Protocol for PHP
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#PHP
+-- https://github.com/xdebug/vscode-php-debug
+
 local dap = require('dap')
+
 dap.adapters.php = {
   type = 'executable',
   command = 'node',

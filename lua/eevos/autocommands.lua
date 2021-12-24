@@ -14,7 +14,7 @@ if O.tsserver.autoformat then
     table.insert(auto_formatters, javascriptreact_autoformat)
 end
 
-local lua_format = {'BufWritePre', '*.lua', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
+local lua_format = {'BufWritePost', '*.lua', 'lua print("BufWritePre *.lua")'}
 if O.lua.autoformat then table.insert(auto_formatters, lua_format) end
 
 local json_format = {'BufWritePre', '*.json', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
@@ -26,7 +26,8 @@ utils.define_augroups({
         {'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})'},
         {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'}, {'VimLeavePre', '*', 'set title set titleold='}
+        {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
+        {'VimLeavePre', '*', 'set title set titleold='}
 
         -- {'User', 'GoyoLeave', 'lua require(\'galaxyline\').disable_galaxyline()'},
         -- {'User', 'GoyoEnter', 'lua require(\'galaxyline\').galaxyline_augroup()'},
@@ -52,7 +53,8 @@ utils.define_augroups({
         {'BufNewFile', '*.gmi', 'setlocal filetype=markdown'}
     },
     _buffer_bindings = {
-        {'FileType', 'dashboard', 'nnoremap <silent> <buffer> q :q<CR>'}, {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
+        {'FileType', 'dashboard', 'nnoremap <silent> <buffer> q :q<CR>'},
+        {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
         {'FileType', 'floaterm', 'nnoremap <silent> <buffer> q :q<CR>'}
     },
     _auto_formatters = auto_formatters

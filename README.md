@@ -78,44 +78,9 @@ pandoc
 To set up your particular debugger, look here:
 [link](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation)
 
-## VSCodium
-
-I recommend you support Free/Libre versions if you plan to use VSCode:
-
-- [VSCodium](https://vscodium.com/)
-
-- Article to get you set up with VSCodium: [link](https://www.chrisatmachine.com/Neovim/22-vscodium-neovim/) 
-
-After installing the [Neovim
-extension](https://github.com/asvetliakov/vscode-neovim) in VSCode
-
-I recommend using this alongside the VSCode
-[which-key](https://github.com/VSpaceCode/vscode-which-key) extension
-
-You will also need `settings.json` and `keybindings.json` which can be
-found in utils/vscode\_config
-
-Point the nvim path to your `nvim` binary
-
-Point your `init.vim` path to:
-
-``` vim
-$HOME/.config/nvim/vimscript/lv-vscode/init.vim
-```
 
 ## TODO
 
-**HIGH PRIORITY**
-
-- Move user config into `config.lua` ts-comment string for react
-- From here I will update for bug fixes and implement low priority
-features when I have time
-- different key to advance through snippets
-
-
-**LOW PRIORITY**
-
-- vim vsnips dir should be co-located with config
 - list all binaries needed for formatters and linters (one day add in wiki)
 - Implement what I can from this java config:
   [link](https://github.com/mfussenegger/nvim-jdtls/wiki/Sample-Configurations)

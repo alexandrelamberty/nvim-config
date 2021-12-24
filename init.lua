@@ -1,26 +1,29 @@
 -- Neovim
 -- https://neovim.io/
+
+
 -- Core
 require "eevos.globals"
 require('eevos.settings')
-require('eevos.utils')
-require('eevos.autocommands')
 require('eevos.keymappings')
 require('eevos.colorscheme')
+require('eevos.utils')
+require('eevos.autocommands')
 
 -- Plugins
 require('eevos.plugins')
-require('eevos.plugins.autopairs')
-require('eevos.plugins.comment')
-require('eevos.plugins.compe')
 require('eevos.plugins.dashboard')
 require('eevos.plugins.galaxyline')
 require('eevos.plugins.gitsigns')
 require('eevos.plugins.neogit')
 require('eevos.plugins.nvimtree')
-require('eevos.plugins.rnvimr')
 require('eevos.plugins.telescope')
 require('eevos.plugins.treesitter')
+require('eevos.plugins.rnvimr')
+
+require('eevos.plugins.autopairs')
+require('eevos.plugins.comment')
+require('eevos.plugins.compe')
 
 -- TODO Move to lua
 vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
@@ -54,6 +57,6 @@ require('eevos.lsp.lua-ls')
 require('eevos.lsp.yaml-ls')
 
 -- DAP
--- require('eevos.dap')
+require('eevos.dap')
 -- require('eevos.dap.javascript-da-chrome')
 -- require'eevos.dap.php-da'
