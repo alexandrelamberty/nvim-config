@@ -1,85 +1,65 @@
---[[
-O is the global options object
-
-Formatters and linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
-
 O = {
-	auto_close_tree = 0,
-	auto_complete = true,
-	colorscheme = 'material',
-	hidden_files = true,
-	wrap_lines = false,
-	number = true,
-	relative_number = true,
-	shell = 'bash',
+    auto_close_tree = 0,
+    auto_complete = true,
+    colorscheme = 'material',
+    hidden_files = true,
+    wrap_lines = false,
+    number = true,
+    relative_number = true,
+    shell = 'bash',
 
-	-- @usage pass a table with your desired languages
-	treesitter = {
-		ensure_installed = "all",
-		ignore_install = {"haskell"},
-		highlight = {enabled = true},
-		playground = {enabled = true},
-		rainbow = {enabled = false}
-	},
+    -- @usage pass a table with your desired languages
+    treesitter = {
+        ensure_installed = "all",
+        ignore_install = {"haskell"},
+        highlight = {enabled = true},
+        playground = {enabled = true},
+        rainbow = {enabled = false}
+    },
 
-	database = {save_location = '~/.config/nvcode_db', auto_execute = 1},
-	
-	python = {
-		linter = 'black',
-		-- @usage can be 'yapf', 'black'
-		formatter = '',
-		autoformat = false,
-		isort = false,
-		diagnostics = {virtual_text = true, signs = true, underline = true}
-	},
-	lua = {
-		-- @usage can be 'lua-format' or 'lua-fmt'
-		formatter = 'lua-fmt',
-		autoformat = false,
-		diagnostics = {virtual_text = true, signs = true, underline = true}
-	},
-	sh = {
-		-- @usage can be 'shellcheck'
-		linter = 'shellcheck',
-		-- @usage can be 'shfmt'
-		formatter = '',
-		autoformat = false,
-		diagnostics = {virtual_text = true, signs = true, underline = true}
-	},
-	tsserver = {
-		-- @usage can be 'eslint'
-		linter = 'eslint',
-		-- @usage can be 'prettier'
-		formatter = 'prettier',
-		autoformat = false,
-		diagnostics = {virtual_text = true, signs = true, underline = true}
-	},
-	json = {
-		-- @usage can be 'prettier'
-		formatter = 'prettier',
-		autoformat = false,
-		diagnostics = {virtual_text = true, signs = true, underline = true}
-	},
-	tailwindls = {
-	  filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}
-	},
-	clang = {
-		diagnostics = {
-			virtual_text = true,
-			signs = true,
-			underline = true
-		}
-	},
-	ruby = {
-		diagnostics = {virtualtext = true, signs = true, underline = true},
-		filetypes = {'rb', 'erb', 'rakefile'}
-	}
-	-- css = {formatter = '', autoformat = false, virtual_text = true},
-	-- json = {formatter = '', autoformat = false, virtual_text = true}
+    database = {save_location = '~/.config/nvcode_db', auto_execute = 1},
+
+    python = {
+        linter = 'black',
+        -- @usage can be 'yapf', 'black'
+        formatter = '',
+        autoformat = false,
+        isort = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    lua = {
+        -- @usage can be 'lua-format' or 'lua-fmt'
+        formatter = 'lua-fmt',
+        autoformat = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    sh = {
+        -- @usage can be 'shellcheck'
+        linter = 'shellcheck',
+        -- @usage can be 'shfmt'
+        formatter = '',
+        autoformat = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    tsserver = {
+        -- @usage can be 'eslint'
+        linter = 'eslint',
+        -- @usage can be 'prettier'
+        formatter = 'prettier',
+        autoformat = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    json = {
+        -- @usage can be 'prettier'
+        formatter = 'prettier',
+        autoformat = false,
+        diagnostics = {virtual_text = true, signs = true, underline = true}
+    },
+    tailwindls = {filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}},
+    clang = {diagnostics = {virtual_text = true, signs = true, underline = true}},
+    ruby = {diagnostics = {virtualtext = true, signs = true, underline = true}, filetypes = {'rb', 'erb', 'rakefile'}}
+    -- css = {formatter = '', autoformat = false, virtual_text = true},
+    -- json = {formatter = '', autoformat = false, virtual_text = true}
 }
 
 O.clang.diagnostics.virtual_text = false

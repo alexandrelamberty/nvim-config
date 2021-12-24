@@ -1,3 +1,5 @@
+-- Neovim
+-- https://neovim.io/
 -- Core
 require "eevos.globals"
 require('eevos.settings')
@@ -20,8 +22,9 @@ require('eevos.plugins.rnvimr')
 require('eevos.plugins.telescope')
 require('eevos.plugins.treesitter')
 
--- Which Key (Hope to replace with Lua plugin someday)
+-- TODO Move to lua
 vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
+-- TODO Find a better way to manage all theses wrapper for plugins functions.
 vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
 
 -- LSP
@@ -30,7 +33,7 @@ require "eevos.lsp.bashls"
 require "eevos.lsp.clangd"
 require "eevos.lsp.cssls"
 -- require('eevos.lsp.dockerls')
--- require('eevos.lsp.efm')
+require('eevos.lsp.efm')
 -- require('eevos.lsp.emmet-ls')
 -- require('eevos.lsp.gopls')
 -- require('eevos.lsp.graphql-ls')

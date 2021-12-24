@@ -1,18 +1,17 @@
 -- Settings for Global variables, Global options and Window options
-
 TERMINAL = vim.fn.expand('$TERMINAL')
 
 -- Setters
 vim.cmd('set iskeyword+=-') -- treat dash separated words as a word text object"
 vim.cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.
 vim.cmd('set inccommand=split') -- Make substitution work in realtime
-vim.cmd('let &titleold="'..TERMINAL..'"')
+vim.cmd('let &titleold="' .. TERMINAL .. '"')
 vim.cmd('set whichwrap+=<,>,[,],h,l') -- move to next line with theses keys
 vim.cmd('syntax on')
 vim.cmd('set colorcolumn=99999') -- fix indentline for now
 vim.cmd('set ts=4') -- Insert 2 spaces for a tab
 vim.cmd('set sw=2') -- Change the number of space characters inserted for indentation
---vim.cmd('set highlight EndOfBuffer ctermbg=333333 ctermfg=333333') -- Change the ≃
+-- vim.cmd('set highlight EndOfBuffer ctermbg=333333 ctermfg=333333') -- Change the ≃
 
 -- Global options
 vim.g.material_theme_style = "ocean-community"
@@ -28,7 +27,7 @@ augroup end
 vim.o.termguicolors = true -- set term giu colors most terminals support this
 vim.o.hidden = O.hidden_files -- Required to keep multiple buffers open multiple buffers
 vim.o.title = true
-vim.o.titlestring="%<%F%=%l/%L - nvim"
+vim.o.titlestring = "%<%F%=%l/%L - nvim"
 vim.o.pumheight = 10 -- Makes popup menu smaller
 vim.o.fileencoding = "utf-8" -- The encoding written to file
 vim.o.cmdheight = 2 -- More space for displaying messages

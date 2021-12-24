@@ -1,6 +1,5 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#efm
 -- https://github.com/mattn/efm-langserver
-
 -- python
 local python_arguments = {}
 
@@ -29,14 +28,11 @@ local luaFormat = {
     formatCommand = "lua-format -i --no-keep-simple-function-one-line --column-limit=120",
     formatStdin = true
 }
-local lua_fmt = {
-    formatCommand = "luafmt --indent-count 2 --line-width 120 --stdin",
-    formatStdin = true
-}
+local lua_fmt = {formatCommand = "luafmt --indent-count 2 --line-width 120 --stdin", formatStdin = true}
 if O.lua.formatter == 'lua-format' then
-  table.insert(lua_arguments, luaFormat)
+    table.insert(lua_arguments, luaFormat)
 elseif O.lua.formatter == 'lua-fmt' then
-  table.insert(lua_arguments, lua_fmt)
+    table.insert(lua_arguments, lua_fmt)
 end
 
 -- sh
@@ -50,10 +46,7 @@ if O.sh.formatter == 'shfmt' then table.insert(sh_arguments, shfmt) end
 if O.sh.linter == 'shellcheck' then table.insert(sh_arguments, shellcheck) end
 
 -- tsserver/web javascript react, vue, json, html, css, yaml
-local prettier = {
-  formatCommand = "prettier --stdin-filepath ${INPUT}", 
-  formatStdin = true
-}
+local prettier = {formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true}
 -- You can look for project scope Prettier and Eslint with e.g. vim.fn.glob("node_modules/.bin/prettier") etc. If it is not found revert to global Prettier where needed.
 -- local prettier = {formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true}
 
@@ -71,7 +64,7 @@ if O.tsserver.formatter == 'prettier' then table.insert(tsserver_args, prettier)
 if O.tsserver.linter == 'eslint' then table.insert(tsserver_args, eslint) end
 
 local markdownlint = {
-	-- https://github.com/DavidAnson/markdownlint
+    -- https://github.com/DavidAnson/markdownlint
     -- TODO default to global lintrc
     -- lintcommand = 'markdownlint -s -c ./markdownlintrc',
     lintCommand = 'markdownlint -s',
@@ -79,33 +72,27 @@ local markdownlint = {
     lintFormats = {'%f:%l %m', '%f:%l:%c %m', '%f: %l: %m'}
 }
 
-local markdownPandocFormat = {
-  formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2', 
-  formatStdin = true
-}
+local markdownPandocFormat = {formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2', formatStdin = true}
 
 require"lspconfig".efm.setup {
     cmd = {DATA_PATH .. "/lspinstall/efm/efm-langserver"},
     init_options = {documentFormatting = true, codeAction = false},
-    filetypes = {"python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml", "markdown"},
+    filetypes = {"lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml", "markdown"},
     settings = {
         rootMarkers = {".git/"},
         languages = {
-			            python = require'eevos.lsp.efm.settings'.python,
-			sh = sh_arguments,
-			            javascript = tsserver_args,
-			            javascriptreact = tsserver_args,
-			            html = {prettier},
-			            css = {prettier},
-			            json = {prettier},
-			            yaml = {prettier},
-			            markdown = {markdownlint}
-            -- javascriptreact = {prettier, eslint},
-            -- javascript = {prettier, eslint},
-            -- markdown = {markdownPandocFormat, markdownlint},
+            lua = lua_arguments,
+            python = python_arguments,
+            sh = sh_arguments,
+            javascript = tsserver_args,
+            javascriptreact = tsserver_args,
+            html = {prettier},
+            css = {prettier},
+            json = {prettier},
+            yaml = {prettier},
+            markdown = {markdownPandocFormat}
         }
     }
 }
-
 -- Also find way to toggle format on save
 -- maybe this will help: https://superuser.com/questions/439078/how-to-disable-autocmd-or-augroup-in-vim
