@@ -8,12 +8,12 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require'lspconfig'.jsonls.setup {
-  capabilities = capabilities,
   cmd = {
-	DATA_PATH .. "/lsp_servers/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
+	DATA_PATH .. "/lsp_servers/jsonls/node_modules/.bin/vscode-json-language-server",
 	"--stdio"
   },
   on_attach = require'eevos.lsp'.common_on_attach,
+  capabilities = capabilities,
   commands = {
 	Format = {
 	  function()

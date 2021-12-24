@@ -25,19 +25,18 @@ vim.cmd('source ~/.config/nvim/vimscript/lv-whichkey/init.vim')
 vim.cmd('source ~/.config/nvim/vimscript/functions.vim')
 
 -- LSP
-require 'eevos.lsp'
-require 'eevos.lsp.bash-ls'
-require 'eevos.lsp.clangd'
-require 'eevos.lsp.css-ls'
--- require('eevos.lsp.dart-ls')
--- require('eevos.lsp.docker-ls')
--- require('eevos.lsp.efm-general-ls')
+require "eevos.lsp"
+require "eevos.lsp.bashls"
+require "eevos.lsp.clangd"
+require "eevos.lsp.cssls"
+-- require('eevos.lsp.dockerls')
+-- require('eevos.lsp.efm')
 -- require('eevos.lsp.emmet-ls')
--- require('eevos.lsp.go-ls')
+-- require('eevos.lsp.gopls')
 -- require('eevos.lsp.graphql-ls')
-require('eevos.lsp.html-ls')
+require('eevos.lsp.html')
 require('eevos.lsp.tsserver')
-require('eevos.lsp.json-ls')
+require('eevos.lsp.jsonls')
 -- require('eevos.lsp.kotlin-ls')
 -- require('eevos.lsp.latex-ls')
 require('eevos.lsp.lua-ls')
@@ -54,4 +53,4 @@ require('eevos.lsp.yaml-ls')
 -- DAP
 -- require('eevos.dap')
 -- require('eevos.dap.javascript-da-chrome')
--- require('eevos.dap.php-da')
+-- require'eevos.dap.php-da'
