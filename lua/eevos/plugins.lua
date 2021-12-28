@@ -40,7 +40,7 @@ return require("packer").startup(function(use)
     use "kevinhwang91/rnvimr"
     use "akinsho/toggleterm.nvim"
     -- Utils
-    -- use "windwp/nvim-autopairs"
+    use "windwp/nvim-autopairs"
     use "terrortylor/nvim-comment"
     use "kevinhwang91/nvim-bqf"
     -- Themes & Icons
@@ -55,6 +55,7 @@ return require("packer").startup(function(use)
     use "glepnir/galaxyline.nvim"
     use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"}
     use "liuchengxu/vim-which-key"
+		use "davidgranstrom/nvim-markdown-preview"
 
     if packer_bootstrap then require('packer').sync() end
 
