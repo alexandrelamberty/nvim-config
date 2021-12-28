@@ -1,34 +1,20 @@
--- chrome has to be started with a remote debugging port google-chrome-stable --remote-debugging-port=9222
+-- DAP for Javascript and Typescript with Firefox
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#javascript-firefox
+-- https://github.com/firefox-devtools/vscode-firefox-debug.git
 local dap = require('dap')
 
-dap.adapters.chrome = {
-  type = "executable",
-  command = "node",
-  args = {os.getenv("HOME") .. "/home/eevos/repos/vscode-chrome-debug/out/src/chromeDebug.js"}
+dap.adapters.firefox = {
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv('HOME') .. '/path/to/vscode-firefox-debug/dist/adapter.bundle.js'},
 }
 
-dap.configurations.javascriptreact = { -- change this to javascript if needed
-  {
-	type = "chrome",
-	request = "attach",
-	program = "${file}",
-	cwd = vim.fn.getcwd(),
-	sourceMaps = true,
-	protocol = "inspector",
-	port = 9222,
-	webRoot = "${workspaceFolder}"
-  }
-}
-
-dap.configurations.typescriptreact = { -- change to typescript if needed
-  {
-	type = "chrome",
-	request = "attach",
-	program = "${file}",
-	cwd = vim.fn.getcwd(),
-	sourceMaps = true,
-	protocol = "inspector",
-	port = 9222,
-	webRoot = "${workspaceFolder}"
-  }
+dap.configurations.typescript = {
+  name = 'Debug with Firefox',
+  type = 'firefox',
+  request = 'launch',
+  reAttach = true,
+  url = 'http://localhost:3000',
+  webRoot = '${workspaceFolder}',
+  firefoxExecutable = '/usr/bin/firefox'
 }

@@ -57,6 +57,7 @@ require('eevos.lsp.lua-ls')
 require('eevos.lsp.yaml-ls')
 
 -- DAP
-require('eevos.dap')
+require('eevos.dap.node')
+
 -- require('eevos.dap.javascript-da-chrome')
 -- require'eevos.dap.php-da'

@@ -89,6 +89,8 @@ require"lspconfig".efm.setup {
             sh = sh,
             javascript = tsserver,
             javascriptreact = tsserver,
+			typescript = tsserver,
+            typescriptreact = tsserver,
             html = {prettier},
             css = {prettier},
             json = {prettier},

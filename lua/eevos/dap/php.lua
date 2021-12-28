@@ -1,4 +1,4 @@
--- Debug Adapter Protocol for PHP
+-- DAP for PHP
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#PHP
 -- https://github.com/xdebug/vscode-php-debug
 
