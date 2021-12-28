@@ -16,6 +16,8 @@ command! LspWorkspaceSymbol lua require 'eevos.utils'.workspace_symbol()
 command! LspGotoNext lua require 'eevos.utils'.goto_next()
 command! LspGotoPrev lua require 'eevos.utils'.goto_prev()
 command! LspShowLineDiagnostics lua require 'eevos.utils'.show_line_diagnostics()
+
+" Gitsigns
 command! NextHunk lua require 'eevos.utils'.next_hunk()
 command! PrevHunk lua require 'eevos.utils'.prev_hunk()
 command! StageHunk lua require 'eevos.utils'.stage_hunk()
@@ -39,7 +41,7 @@ command! DebugGetSession lua require'dap'.session()
 command! NotesCreate lua require 'lv-notes'.create_note()
 command! NotesVersion lua require 'lv-notes'.create_note()
 
-nnoremap <silent> <F5> :source $MYVIMRC<CR>
+nnoremap <silent> <F5> :source $MYVIMRC notify("Neovim reloaded...")<CR>
 " Available Debug Adapters:
 "   https://microsoft.github.io/debug-adapter-protocol/implementors/adapters/
 " 

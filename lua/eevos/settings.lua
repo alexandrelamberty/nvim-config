@@ -3,9 +3,8 @@ TERMINAL = vim.fn.expand('$TERMINAL')
 
 -- Setters
 vim.cmd('set iskeyword+=-') -- treat dash separated words as a word text object"
-vim.cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.
+--vim.cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.
 vim.cmd('set inccommand=split') -- Make substitution work in realtime
-vim.cmd('let &titleold="' .. TERMINAL .. '"')
 vim.cmd('set whichwrap+=<,>,[,],h,l') -- move to next line with theses keys
 vim.cmd('syntax on')
 vim.cmd('set colorcolumn=99999') -- fix indentline for now
@@ -15,15 +14,10 @@ vim.cmd('set sw=2') -- Change the number of space characters inserted for indent
 
 -- Global options
 vim.g.material_theme_style = "ocean-community"
-vim.g.markdown_folding = 1 -- Enable markdown heading folding https://github.com/tpope/vim-markdown
-vim.cmd([[
-augroup MyColors
-autocmd!
-autocmd ColorScheme * highlight EndOfBuffer guifg=#0F111A
-augroup end
-]])
+
 
 -- Options
+vim.opt.completeopt = { "menuone", "noselect" }
 vim.o.termguicolors = true -- set term giu colors most terminals support this
 vim.o.hidden = O.hidden_files -- Required to keep multiple buffers open multiple buffers
 vim.o.title = true
@@ -37,7 +31,7 @@ vim.o.splitright = true -- Vertical splits will automatically be to the right
 vim.o.conceallevel = 0 -- So that I can see `` in markdown files
 vim.o.showtabline = 0 -- Always show tabs
 vim.o.showmode = true -- We don't need to see things like -- INSERT -- anymore
-vim.o.backup = false -- This is recommended by coc
+vim.opt.backup = false -- This is recommended by coc
 vim.o.writebackup = false -- This is recommended by coc
 vim.o.updatetime = 300 -- Faster completion
 vim.o.timeoutlen = 100 -- By default timeoutlen is 1000 ms

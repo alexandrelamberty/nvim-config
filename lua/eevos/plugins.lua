@@ -26,17 +26,21 @@ return require("packer").startup(function(use)
     use "mfussenegger/nvim-dap"
     -- Autocomplete
     use "hrsh7th/nvim-cmp"
-	use 'hrsh7th/cmp-nvim-lsp'
-    use "hrsh7th/vim-vsnip"
-    use "rafamadriz/friendly-snippets"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
+    use "hrsh7th/cmp-nvim-lua"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "saadparwaiz1/cmp_luasnip"
     -- Treesitter
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "windwp/nvim-ts-autotag"
     -- Explorer
     use "kyazdani42/nvim-tree.lua"
     use "kevinhwang91/rnvimr"
+    use "akinsho/toggleterm.nvim"
     -- Utils
-    use "windwp/nvim-autopairs"
+    -- use "windwp/nvim-autopairs"
     use "terrortylor/nvim-comment"
     use "kevinhwang91/nvim-bqf"
     -- Themes & Icons
