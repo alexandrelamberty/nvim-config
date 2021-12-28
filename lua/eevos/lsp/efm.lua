@@ -78,7 +78,7 @@ if O.markdown.formatter == 'pandoc' then table.insert(markdown, pandoc) end
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#efm
 -- https://github.com/mattn/efm-langserver
 require"lspconfig".efm.setup {
-    cmd = {DATA_PATH .. "/lspinstall/efm/efm-langserver"},
+    cmd = {DATA_PATH .. "/lsp_servers/efm/efm-langserver"},
     init_options = {documentFormatting = true, codeAction = false},
     filetypes = {"lua", "python", "javascriptreact", "javascript", "sh", "html", "css", "json", "yaml", "markdown"},
     settings = {

@@ -8,8 +8,8 @@ vim.fn.sign_define("LspDiagnosticsSignHint",
 vim.fn.sign_define("LspDiagnosticsSignInformation",
                    {texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation"})
 
-vim.cmd("nnoremap <silent> ca :Lspsaga code_action<CR>")
 vim.cmd("nnoremap <silent> K :Lspsaga hover_doc<CR>")
+vim.cmd("nnoremap <silent> ca :Lspsaga code_action<CR>")
 
 -- vim.cmd('nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
 vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
@@ -76,8 +76,12 @@ local function documentHighlight(client, bufnr)
     end
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 local lsp_config = {}
 
+lsp_config.capabilities = capabilities
 function lsp_config.common_on_attach(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -110,6 +114,7 @@ function lsp_config.common_on_attach(client, bufnr)
     buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
     buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     documentHighlight(client, bufnr)
+	client.capabilities = capabilities
 end
 
 function lsp_config.tsserver_on_attach(client, bufnr)
