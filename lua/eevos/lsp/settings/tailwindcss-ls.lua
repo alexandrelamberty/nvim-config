@@ -1,18 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/tailwindcss.lua
 -- https://github.com/tailwindlabs/tailwindcss-intellisense
-
-local lspconfig = require 'lspconfig'
-local configs = require 'lspconfig/configs'
-
--- Check if tailwindls server already defined.
-if not lspconfig.tailwindls then configs['tailwindls'] = {default_config = {}} end
-
-lspconfig.tailwindls.setup {
-    cmd = {
-        "node", DATA_PATH .. "/lspinstall/tailwindcss/tailwindcss-intellisense/extension/dist/server/index.js",
-        "--stdio"
-    },
+return {
     filetypes = O.tailwindls.filetypes,
     root_dir = require('lspconfig/util').root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
     handlers = {
@@ -20,6 +9,5 @@ lspconfig.tailwindls.setup {
             -- tailwindcss lang server waits for this repsonse before providing hover
             vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", {_id = params._id})
         end
-    },
-    on_attach = require'eevos.lsp'.common_on_attach
+    }
 }
