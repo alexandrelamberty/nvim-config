@@ -123,7 +123,7 @@ let g:which_key_map.l = {
       \ 'I' : [':LspInfo'                            , 'lsp info'],
       \ 'v' : [':LspVirtualTextToggle'               , 'lsp toggle virtual text'],
       \ 'l' : [':Lspsaga lsp_finder'                 , 'lsp finder'],
-      \ 'L' : [':LspShowLineDiagnostic'      , 'line_diagnostics'],
+      \ 'L' : [':LspShowLineDiagnostic'     				 , 'line_diagnostics'],
       \ 'p' : [':Lspsaga preview_definition'         , 'preview definition'],
       \ 'q' : [':Telescope quickfix'                 , 'quickfix'],
       \ 'r' : [':Lspsaga rename'                     , 'rename'],
