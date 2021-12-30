@@ -1,3 +1,4 @@
+-- TODO: Need to test if the commands works
 -- TODO: Explore more of what you could do
 -- Check augroups ???
 local utils = require('eevos.utils')

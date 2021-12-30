@@ -13,11 +13,12 @@ vim.cmd('set sw=2') -- Change the number of space characters inserted for indent
 -- vim.cmd('set highlight EndOfBuffer ctermbg=333333 ctermfg=333333') -- Change the ≃
 
 -- Global options
+vim.g.colorscheme = 'material'
 vim.g.material_theme_style = "ocean-community"
 
 -- Options
 vim.o.termguicolors = true -- set term giu colors most terminals support this
-vim.o.hidden = O.hidden_files -- Required to keep multiple buffers open multiple buffers
+vim.o.hidden = true -- Required to keep multiple buffers open multiple buffers
 vim.o.title = true
 vim.o.titlestring = "%<%F%=%l/%L - nvim"
 vim.o.pumheight = 10 -- Makes popup menu smaller
@@ -41,8 +42,8 @@ vim.bo.expandtab = true -- Converts tabs to spaces
 vim.bo.smartindent = true -- Makes indenting smart
 
 -- Window options
-vim.wo.wrap = O.wrap_lines -- Display long lines as just one line
-vim.wo.number = O.number -- set numbered lines
-vim.wo.relativenumber = O.relative_number -- set relative number
+vim.wo.wrap = true -- Display long lines as just one line
+vim.wo.number = true -- set numbered lines
+vim.wo.relativenumber = true -- set relative number
 vim.wo.cursorline = true -- Enable highlighting of the current line
 vim.wo.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time

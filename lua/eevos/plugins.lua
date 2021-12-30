@@ -68,7 +68,7 @@ return require("packer").startup(function(use)
 
 
     use "liuchengxu/vim-which-key"
-
+		use "folke/which-key.nvim"
 
     use "davidgranstrom/nvim-markdown-preview"
 
