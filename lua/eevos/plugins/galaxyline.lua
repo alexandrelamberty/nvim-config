@@ -61,7 +61,7 @@ gls.left[1] = {
 		t = colors.blue
 	  }
 	  vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
-	  return '▊ ' 
+	  return '▊ '
 	end,
 	highlight = {colors.red, colors.bg}
   }
@@ -119,7 +119,7 @@ gls.left[6] = {
 gls.left[7] = {
   SFileName = {
 	provider = 'SFileName',
-	condition = condition.buffer_not_empty, 
+	condition = condition.buffer_not_empty,
 	highlight = {colors.blue, colors.bg}
   }
 }
@@ -134,8 +134,8 @@ gls.right[1] = {
 
 gls.right[2] = {
   DiagnosticWarn = {
-	provider = 'DiagnosticWarn', 
-	icon = '  ', 
+	provider = 'DiagnosticWarn',
+	icon = '  ',
 	highlight = {colors.orange, colors.bg}
   }
 }
@@ -232,8 +232,8 @@ gls.right[11] = {
 
 gls.short_line_left[1] = {
   SFileName = {
-	provider = 'SFileName', 
-	condition = condition.buffer_not_empty, 
+	provider = 'SFileName',
+	condition = condition.buffer_not_empty,
 	highlight = {colors.blue, colors.bg}
   }
 }

@@ -15,9 +15,7 @@ vim.cmd('set sw=2') -- Change the number of space characters inserted for indent
 -- Global options
 vim.g.material_theme_style = "ocean-community"
 
-
 -- Options
-vim.opt.completeopt = { "menuone", "noselect" }
 vim.o.termguicolors = true -- set term giu colors most terminals support this
 vim.o.hidden = O.hidden_files -- Required to keep multiple buffers open multiple buffers
 vim.o.title = true

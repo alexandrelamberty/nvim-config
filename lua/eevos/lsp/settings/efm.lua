@@ -43,7 +43,9 @@ if O.sh.linter == 'shellcheck' then table.insert(sh, shellcheck) end
 
 -- tsserver/web javascript react, vue, json, html, css, yaml
 local prettier = {formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true}
--- You can look for project scope Prettier and Eslint with e.g. vim.fn.glob("node_modules/.bin/prettier") etc. If it is not found revert to global Prettier where needed.
+-- You can look for project scope Prettier and Eslint with e.g.
+-- vim.fn.glob("node_modules/.bin/prettier") etc. If it is not found revert to
+-- global Prettier where needed.
 -- local prettier = {formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true}
 
 local eslint = {
@@ -74,7 +76,6 @@ local pandoc = {formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2', fo
 if O.markdown.formatter == 'markdownlint' then table.insert(markdown, markdownlint) end
 if O.markdown.formatter == 'pandoc' then table.insert(markdown, pandoc) end
 
-
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#efm
 -- https://github.com/mattn/efm-langserver
 return {
@@ -88,7 +89,7 @@ return {
             sh = sh,
             javascript = tsserver,
             javascriptreact = tsserver,
-			typescript = tsserver,
+            typescript = tsserver,
             typescriptreact = tsserver,
             html = {prettier},
             css = {prettier},

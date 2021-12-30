@@ -116,15 +116,14 @@ let g:which_key_map.g = {
 " l is for language server protocol
 let g:which_key_map.l = {
       \ 'name' : '+lsp' ,
-      \ 'a' : [':Lspsaga code_action'                , 'code action'],
-      \ 'A' : [':Lspsaga range_code_action'          , 'selected action'],
+      \ 'a' : [':LspCodeAction'                			 , 'code action'],
       \ 'd' : [':Telescope lsp_document_diagnostics' , 'document diagnostics'],
       \ 'D' : [':Telescope lsp_workspace_diagnostics', 'workspace diagnostics'],
       \ 'f' : [':LspFormatting'                      , 'format'],
       \ 'I' : [':LspInfo'                            , 'lsp info'],
       \ 'v' : [':LspVirtualTextToggle'               , 'lsp toggle virtual text'],
       \ 'l' : [':Lspsaga lsp_finder'                 , 'lsp finder'],
-      \ 'L' : [':Lspsaga show_line_diagnostics'      , 'line_diagnostics'],
+      \ 'L' : [':LspShowLineDiagnostic'      , 'line_diagnostics'],
       \ 'p' : [':Lspsaga preview_definition'         , 'preview definition'],
       \ 'q' : [':Telescope quickfix'                 , 'quickfix'],
       \ 'r' : [':Lspsaga rename'                     , 'rename'],
