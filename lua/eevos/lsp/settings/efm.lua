@@ -1,4 +1,4 @@
-local python = {}
+	local python = {}
 -- TODO replace with path argument
 local flake8 = {
     lintCommand = "flake8 --ignore=E501 --stdin-display-name ${INPUT} -",

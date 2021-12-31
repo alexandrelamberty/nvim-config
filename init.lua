@@ -28,7 +28,9 @@ require 'eevos.plugins.whichkey'
 require "eevos.lsp"
 
 -- DAP
--- require('eevos.dap.node')
+require "eevos.dap"
+require "eevos.dap.node"
+require "eevos.dap.chrome"
 -- require('eevos.dap.javascript-da-chrome')
 -- require'eevos.dap.php-da'
 

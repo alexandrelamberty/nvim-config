@@ -22,7 +22,7 @@ function utils.define_augroups(definitions) -- {{{1
     end
 end
 
--- lsp
+-- LSP
 
 function utils.add_to_workspace_folder()
     vim.lsp.buf.add_workspace_folder()
@@ -141,6 +141,39 @@ function utils.show_line_diagnostics()
     vim.lsp.diagnostic.show_line_diagnostics()
 end
 
+-- DAP
+
+function utils.toggle_breakpoint()
+
+end
+
+function utils.start()
+
+end
+
+function utils.continue()
+
+end
+
+function utils.step_over()
+
+end
+
+function utils.step_out()
+
+end
+
+function utils.step_into()
+
+end
+
+function utils.toggle_repl()
+
+end
+
+function utils.get_session()
+
+end
 -- git signs
 
 function utils.next_hunk()

@@ -22,7 +22,7 @@ O = {
     },
     lua = {
         -- @usage can be 'lua-format' or 'lua-fmt'
-        formatter = 'lua-fmt',
+        formatter = 'lua-format',
         autoformat = true,
         diagnostics = {virtual_text = true, signs = true, underline = true}
     },

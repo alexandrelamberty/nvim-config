@@ -1,4 +1,4 @@
--- TODO: Need to test if the commands works
+	-- TODO: Need to test if the commands works
 -- TODO: Explore more of what you could do
 -- Check augroups ???
 local utils = require('eevos.utils')
@@ -15,7 +15,7 @@ if O.tsserver.autoformat then
     table.insert(auto_formatters, javascriptreact_autoformat)
 end
 
-local lua_format = {'BufWritePost', '*.lua', 'lua print("BufWritePre *.lua")'}
+local lua_format = {'BufWritePost', '*.lua', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
 if O.lua.autoformat then table.insert(auto_formatters, lua_format) end
 
 local json_format = {'BufWritePre', '*.json', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}

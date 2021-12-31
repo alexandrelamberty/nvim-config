@@ -31,6 +31,7 @@ return require("packer").startup(function(use)
 
     -- Debugging
     use "mfussenegger/nvim-dap"
+    use "rcarriga/nvim-dap-ui"
 
     -- Completion
     use "hrsh7th/nvim-cmp"
@@ -41,14 +42,14 @@ return require("packer").startup(function(use)
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
     use "saadparwaiz1/cmp_luasnip"
-		use "onsails/lspkind-nvim"
-		use "L3MON4D3/LuaSnip"
+    use "onsails/lspkind-nvim"
+    use "L3MON4D3/LuaSnip"
 
     -- Treesitter
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "windwp/nvim-ts-autotag"
 
-		-- Git
+    -- Git
     use {
         'lewis6991/gitsigns.nvim',
         requires = {'nvim-lua/plenary.nvim'}
@@ -56,19 +57,18 @@ return require("packer").startup(function(use)
     }
     use {"TimUntersberger/neogit", requires = "nvim-lua/plenary.nvim"}
 
-		-- Explorer
+    -- Explorer
     use "kyazdani42/nvim-tree.lua"
     use "kevinhwang91/rnvimr"
 
-		-- Terminal
+    -- Terminal
     use "akinsho/toggleterm.nvim"
 
-		-- Status bar
+    -- Status bar
     use "glepnir/galaxyline.nvim"
 
-
     use "liuchengxu/vim-which-key"
-		use "folke/which-key.nvim"
+    use "folke/which-key.nvim"
 
     use "davidgranstrom/nvim-markdown-preview"
 
