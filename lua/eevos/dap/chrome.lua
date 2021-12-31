@@ -10,6 +10,7 @@ dap.adapters.chrome = {
 
 dap.configurations.javascriptreact = { -- change this to javascript if needed
     {
+        name = 'Attach to process javascriptreact',
         type = "chrome",
         request = "attach",
         program = "${file}",
@@ -23,6 +24,7 @@ dap.configurations.javascriptreact = { -- change this to javascript if needed
 
 dap.configurations.typescriptreact = { -- change to typescript if needed
     {
+        name = 'Attach to process typescript',
         type = "chrome",
         request = "attach",
         program = "${file}",
