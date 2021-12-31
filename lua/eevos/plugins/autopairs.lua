@@ -1,3 +1,5 @@
+-- nvim-autopairs
+-- https://github.com/windwp/nvim-autopairs
 require('nvim-autopairs').setup()
 local npairs = require('nvim-autopairs')
 
@@ -27,4 +29,3 @@ MUtils.completion_confirm = function()
         return npairs.check_break_line_char()
     end
 end
-

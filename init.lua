@@ -13,6 +13,8 @@ require 'eevos.autocommands'
 require 'eevos.plugins.autopairs'
 require 'eevos.plugins.cmp'
 require 'eevos.plugins.comment'
+require 'eevos.plugins.dap-ui'
+require "eevos.plugins.dap"
 -- require 'eevos.plugins.emmet'
 require 'eevos.plugins.galaxyline'
 require 'eevos.plugins.gitsigns'
@@ -28,9 +30,7 @@ require 'eevos.plugins.whichkey'
 require "eevos.lsp"
 
 -- DAP
-require "eevos.dap"
+
 require "eevos.dap.node"
 require "eevos.dap.chrome"
--- require('eevos.dap.javascript-da-chrome')
--- require'eevos.dap.php-da'
-
+require 'eevos.dap.php'
