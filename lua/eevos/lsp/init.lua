@@ -5,3 +5,4 @@ end
 
 require("eevos.lsp.lsp-installer")
 require("eevos.lsp.handlers").setup()
+require "eevos.lsp.null-ls"

@@ -33,4 +33,6 @@ require "eevos.lsp"
 
 require "eevos.dap.node"
 require "eevos.dap.chrome"
+require 'eevos.dap.python'
 require 'eevos.dap.php'
+
