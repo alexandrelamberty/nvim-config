@@ -1,0 +1,8 @@
+# https://github.com/Koihik/LuaFormatter/blob/master/docs/Style-Config.md
+indent_width: 2
+continuation_indent_width: 2
+keep_simple_control_block_one_line: false
+keep_simple_function_one_line: false
+spaces_inside_table_braces: true
+chop_down_table: true
+column_table_limit: 10
