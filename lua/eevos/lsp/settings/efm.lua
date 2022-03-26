@@ -134,7 +134,7 @@ return {
   },
   filetypes = {
     "lua",
-    "python",
+			"python",
     "javascriptreact",
     "javascript",
     "typescriptreact",
@@ -151,7 +151,7 @@ return {
       ".git/"
     },
     languages = {
-      lua = lua,
+      -- lua = lua,
       python = python,
       sh = sh,
       javascript = tsserver,
