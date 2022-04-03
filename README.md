@@ -1,6 +1,6 @@
 # Neovim
 
-This is my [Neovim]() setup for development.
+My [Neovim]() setup for everyday text editing and programming.
 
 ## Plugins
 
@@ -32,7 +32,16 @@ This is my [Neovim]() setup for development.
 
 ## DAP
 
+## Installation
+
+### Dependencies
+
+### Neovim and plugins
+
+### LSP
+
+### DAP
 
 ## Plugins to check
 
-- [Trouble](https://github.com/folke/trouble.nvim)
+- [ ] [Trouble](https://github.com/folke/trouble.nvim)
