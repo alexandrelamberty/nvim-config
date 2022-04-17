@@ -1,3 +1,6 @@
+# Nvim configuration gitignore file
+# TODO: Describe ignored path
+
 plugin/
 dein
 tags*
@@ -16,5 +19,3 @@ eclipse.jdt.ls/
 .language-servers/
 .debuggers/
 spell/
-nv-settings.lua
-lv-settings.lua

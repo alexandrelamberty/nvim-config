@@ -114,16 +114,18 @@ local markdownlint = {
     '%f: %l: %m'
   }
 }
-local pandoc = {
-  formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2',
-  formatStdin = true
-}
+
 if O.markdown.formatter == 'markdownlint' then
   table.insert(markdown, markdownlint)
 end
 if O.markdown.formatter == 'pandoc' then
   table.insert(markdown, pandoc)
 end
+
+local pandoc = {
+  formatCommand = 'pandoc -f markdown -t gfm -sp --tab-stop=2',
+  formatStdin = true
+}
 
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#efm
 -- https://github.com/mattn/efm-langserver
@@ -133,44 +135,27 @@ return {
     codeAction = false
   },
   filetypes = {
-    "lua",
-			"python",
+    -- "lua",
+    "python",
     "javascriptreact",
     "javascript",
     "typescriptreact",
     "typescript",
-    "sh",
-    "html",
-    "css",
-    "json",
-    "yaml",
-    "markdown"
+    "markdown",
+		"shell",
   },
   settings = {
     rootMarkers = {
       ".git/"
     },
     languages = {
-      -- lua = lua,
       python = python,
-      sh = sh,
       javascript = tsserver,
       javascriptreact = tsserver,
+      -- lua = lua,
+      markdown = markdown,
       typescript = tsserver,
-      typescriptreact = prettier,
-      html = {
-        prettier
-      },
-      css = {
-        prettier
-      },
-      json = {
-        prettier
-      },
-      yaml = {
-        prettier
-      },
-      markdown = markdown
+      sh = sh
     }
   }
 }

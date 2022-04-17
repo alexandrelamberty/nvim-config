@@ -1,47 +1,50 @@
-# Neovim
+# My Neovim configuration
 
-My [Neovim]() setup for everyday text editing and programming.
+Setup for everyday text editing and programming.
+
+The configuration is made with Lua.
+
+## Roadmap v 0.0.1
+
+	[ ] Spelling
+	[ ] Formatter and Linter
+	[ ] LSP
+	[ ] DAP
+	
+## Requirements
+
+If installed alone without [Ikbs]() theses packages need to be installed:
+	
+	- Ranger
+	- ...
+	
+## Installation
+
+Check and run the `ìnstall.sh` script
+
+## Features
+	
+	* Formatter / Linter
+	* Language Server Protocol
+	* Debug Adapter Protocol
 
 ## Plugins
 
-### Autopair
+All the plugins used in this configuration. I tend to keep it small as
+possible.
 
-### Cmp
+	* Autopair
+	* Cmp
+	* Comment
+	* Emmet
+	* Galaxyline
+	* Gitsigns
+	* Neogit
+	* Nvimtree
+	* Rnvimr
+	* Telescope
+	* Treesitter
+	* Wichkey
+	* LSP
+	* DAP
 
-### Comment
-
-### Emmet
-
-### Galaxyline
-
-### Gitsigns
-
-### Neogit
-
-### Nvimtree
-
-### Rnvimr
-
-### Telescope
-
-### Treesitter
-
-### Wichkey
-
-## LSP
-
-## DAP
-
-## Installation
-
-### Dependencies
-
-### Neovim and plugins
-
-### LSP
-
-### DAP
-
-## Plugins to check
-
-- [ ] [Trouble](https://github.com/folke/trouble.nvim)
