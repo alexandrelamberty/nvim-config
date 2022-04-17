@@ -4,18 +4,26 @@ if not null_ls_status_ok then
   return
 end
 
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
+-- Builtins (code_action, completion, diagnostics, formatting, hover)
+
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/code_actions
+local code_actions = null_ls.builtins.code_actions
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/lua/null-ls/builtins/completion/
+local completion = null_ls.builtins.completion
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+local formatting = null_ls.builtins.formatting
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/hover
+local hover = null_ls.builtins.hover
 
 null_ls.setup {
   debug = false,
   sources = {
-    null_ls.builtins.code_actions.gitsigns,
-    null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.code_actions.eslint,
+    completion.spell,
+    code_actions.gitsigns,
+    code_actions.eslint,
+    diagnostics.eslint,
     formatting.prettier.with {
       extra_args = {
         "--no-semi",
