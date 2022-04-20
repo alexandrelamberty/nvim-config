@@ -8,8 +8,8 @@ printf "Neovim configuration installation v%s\n" $VERSION
 
 # remove the ~/.config/nvim`
 printf "Removing %s\n" $TARGET
-# rm -rf "~/.config/nvim"
+rm -rf "~/.config/nvim"
 
 # stow this package
 printf "Stowing %s in %s\n" $SOURCE $TARGET
-# stow -vSt ~ config
+stow -vSt ~ config

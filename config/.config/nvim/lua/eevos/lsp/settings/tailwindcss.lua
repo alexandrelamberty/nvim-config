@@ -2,5 +2,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/tailwindcss.lua
 -- https://github.com/tailwindlabs/tailwindcss-intellisense
 return {
-	filetypes = { "html" }
+  filetypes = {
+    "html"
+  }
 }

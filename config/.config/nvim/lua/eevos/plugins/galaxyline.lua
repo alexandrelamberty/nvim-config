@@ -65,7 +65,8 @@ gls.left[1] = {
         ['!'] = colors.blue,
         t = colors.blue
       }
-      vim.api.nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
+      vim.api
+        .nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
       return '▊ '
     end,
     highlight = {
@@ -115,7 +116,7 @@ gls.left[4] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
-    icon = '  ',
+    icon = ' ',
     highlight = {
       colors.green,
       colors.bg
@@ -146,6 +147,17 @@ gls.left[6] = {
 }
 
 gls.left[7] = {
+  FileIcon = {
+    provider = 'FileIcon',
+    condition = condition.buffer_not_empty,
+    highlight = {
+      require('galaxyline.provider_fileinfo').get_file_icon_color,
+      colors.bg
+    }
+  }
+}
+
+gls.left[8] = {
   SFileName = {
     provider = 'SFileName',
     condition = condition.buffer_not_empty,
@@ -205,7 +217,6 @@ gls.right[5] = {
     provider = 'GetLspClient',
     condition = function()
       local tbl = {
-        ['dashboard'] = true,
         [' '] = true
       }
       if tbl[vim.bo.filetype] then
@@ -224,7 +235,7 @@ gls.right[5] = {
 gls.right[6] = {
   LineInfo = {
     provider = 'LineColumn',
-    separator = '  ',
+    separator = ' ',
     separator_highlight = {
       'NONE',
       colors.bg
@@ -239,7 +250,7 @@ gls.right[6] = {
 gls.right[7] = {
   PerCent = {
     provider = 'LinePercent',
-    separator = ' ',
+    separator = '',
     separator_highlight = {
       'NONE',
       colors.bg
@@ -254,7 +265,7 @@ gls.right[7] = {
 gls.right[8] = {
   Tabstop = {
     provider = function()
-      return "Spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+      return " " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
     end,
     condition = condition.hide_in_width,
     separator = ' ',
@@ -289,30 +300,13 @@ gls.right[10] = {
   FileEncode = {
     provider = 'FileEncode',
     condition = condition.hide_in_width,
-    separator = ' ',
+    separator = '  ',
     separator_highlight = {
       'NONE',
       colors.bg
     },
     highlight = {
       colors.grey,
-      colors.bg
-    }
-  }
-}
-
-gls.right[11] = {
-  Space = {
-    provider = function()
-      return ' '
-    end,
-    separator = ' ',
-    separator_highlight = {
-      'NONE',
-      colors.bg
-    },
-    highlight = {
-      colors.orange,
       colors.bg
     }
   }
