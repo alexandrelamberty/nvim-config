@@ -1,4 +1,4 @@
-# My Neovim configuration
+# Neovim configuration
 
 Setup for everyday text editing and programming.
 
@@ -6,14 +6,17 @@ The configuration is made with Lua.
 
 ## Roadmap v 0.0.1
 
-    [ ] Spelling
-    [ ] Formatter and Linter
-    [ ] LSP
+		[ ] Completion
+    [ ] Spelling, dict
+    [ ] LSP & Null-ls
     [ ] DAP
 
 ## Features
 
-	* Formatter / Linter
+	* Explorer 
+	* File Manager
+	* Terminal
+	* Status line
 	* Language Server Protocol
 	* Debug Adapter Protocol
 

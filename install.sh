@@ -1,15 +1,11 @@
 #!/bin/bash
-# Installation scripts for the neovim configuration
-VERSION=0.0.1
-SOURCE=config
-TARGET=~/.config/nvim
+# Nvim configuration installation
 
-printf "Neovim configuration installation v%s\n" $VERSION
+PACKAGE=config
+TARGET=$HOME
 
-# remove the ~/.config/nvim`
-printf "Removing %s\n" $TARGET
-rm -rf "~/.config/nvim"
+printf "Nvim configuration installation\n"
+stow -vDt "$TARGET" $PACKAGE
+rm -rf "$HOME/.config/nvim"
+stow -vSt "$TARGET" $PACKAGE
 
-# stow this package
-printf "Stowing %s in %s\n" $SOURCE $TARGET
-stow -vSt ~ config

@@ -1,5 +1,4 @@
-# Nvim configuration gitignore file
-# TODO: Describe ignored path
+# Git ignore file
 
 plugin/
 dein
