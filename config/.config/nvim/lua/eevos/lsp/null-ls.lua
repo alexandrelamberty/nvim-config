@@ -24,6 +24,7 @@ null_ls.setup {
     code_actions.gitsigns,
     code_actions.eslint,
     diagnostics.eslint,
+    formatting.nginx_beautifier,
     formatting.prettier.with {
       extra_args = {
         "--no-semi",

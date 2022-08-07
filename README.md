@@ -8,7 +8,8 @@ The configuration is made with Lua.
 
 		[ ] Completion
     [ ] Spelling, dict
-    [ ] LSP & Null-ls
+		[ ] Snippets
+    [ ] LSP 
     [ ] DAP
 
 ## Features
