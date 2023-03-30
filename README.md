@@ -6,11 +6,11 @@ The configuration is made with Lua.
 
 ## Roadmap v 0.0.1
 
-		[ ] Completion
-    [ ] Spelling, dict
-		[ ] Snippets
-    [ ] LSP 
-    [ ] DAP
+[ ] Completion
+[ ] Spelling, dict
+[ ] Snippets
+[ ] LSP 
+[ ] DAP
 
 ## Features
 
