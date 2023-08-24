@@ -31,6 +31,7 @@ return require("packer").startup(function(use)
   use 'williamboman/nvim-lsp-installer'
   use "glepnir/lspsaga.nvim"
   use "jose-elias-alvarez/null-ls.nvim"
+
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
@@ -88,6 +89,10 @@ return require("packer").startup(function(use)
   -- Themes & Icons
   use "kaicataldo/material.vim"
   use "kyazdani42/nvim-web-devicons"
+
+  -- NPM Scrips
+  use "voldikss/vim-floaterm"
+  use "kishikaisei/telescope-js-package-scripts.nvim"
 
   if packer_bootstrap then
     require('packer').sync()

@@ -1,0 +1,1 @@
+-- require('telescope').extensions.packagescript.scripts()

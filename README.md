@@ -2,23 +2,21 @@
 
 Setup for everyday text editing and programming.
 
-The configuration is made with Lua.
+## Roadmap
 
-## Roadmap v 0.0.1
-
-		[ ] Completion
-    [ ] Spelling, dict
-    [ ] LSP & Null-ls
-    [ ] DAP
+- [ ] Completion
+- [ ] Spelling, dict
+- [ ] LSP & Null-ls
+- [ ] DAP
 
 ## Features
 
-	* Explorer 
-	* File Manager
-	* Terminal
-	* Status line
-	* Language Server Protocol
-	* Debug Adapter Protocol
+* Explorer 
+* File Manager
+* Terminal
+* Status line
+* Language Server Protocol
+* Debug Adapter Protocol
 
 ## Requirements
 
@@ -28,17 +26,29 @@ The configuration is made with Lua.
 
 Check and run the `ìnstall.sh` script
 
+Launch Neovim and run the command to install the plugins dependencies.
+
+```vim
+:PackerInstall
+```
+
 ## Configuration
 
 ### LSP
 
 ### DAP
 
-## Plugins
+### Plugins
 
 All the plugins used in this configuration. I tend to keep it small as
 possible.
 
+```vim
+:PackerStatus
+```	
+
+vimvi
+```
  * LuaSnip
  * cmp-buffer
  * cmp-cmdline
