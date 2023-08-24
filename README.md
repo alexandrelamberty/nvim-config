@@ -48,7 +48,7 @@ possible.
 
 ```vim
 :PackerStatus
-``` 
+```
 
 vimvi
 
