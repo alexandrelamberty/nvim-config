@@ -4,23 +4,26 @@ Setup for everyday text editing and programming.
 
 ## Roadmap
 
+## Roadmap v 0.0.1
+
 - [ ] Completion
 - [ ] Spelling, dict
-- [ ] LSP & Null-ls
+- [ ] Snippets
+- [ ] LSP
 - [ ] DAP
 
 ## Features
 
-* Explorer 
-* File Manager
-* Terminal
-* Status line
-* Language Server Protocol
-* Debug Adapter Protocol
+- Explorer
+- File Manager
+- Terminal
+- Status line
+- Language Server Protocol
+- Debug Adapter Protocol
 
 ## Requirements
 
- * NVIM v0.6.0
+- NVIM v0.6.0
 
 ## Installation
 
@@ -45,9 +48,10 @@ possible.
 
 ```vim
 :PackerStatus
-```	
+``` 
 
 vimvi
+
 ```
  * LuaSnip
  * cmp-buffer
