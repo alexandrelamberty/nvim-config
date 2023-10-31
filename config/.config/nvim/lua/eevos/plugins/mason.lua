@@ -1,0 +1,3 @@
+--- mason
+--
+require('mason').setup({})

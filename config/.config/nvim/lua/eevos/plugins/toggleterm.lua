@@ -45,10 +45,28 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
+local lua = Terminal:new({ cmd = "lua", hidden = true })
+
+function _LUA_TOGGLE()
+	lua:toggle()
+end
+
 local node = Terminal:new({ cmd = "node", hidden = true })
 
 function _NODE_TOGGLE()
 	node:toggle()
+end
+
+local python = Terminal:new({ cmd = "python", hidden = true })
+
+function _PYTHON_TOGGLE()
+	python:toggle()
+end
+
+local mysql = Terminal:new({ cmd = "mysql", hidden = true })
+
+function _MYSQL_TOGGLE()
+	mysql:toggle()
 end
 
 local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
@@ -61,10 +79,4 @@ local htop = Terminal:new({ cmd = "htop", hidden = true })
 
 function _HTOP_TOGGLE()
 	htop:toggle()
-end
-
-local python = Terminal:new({ cmd = "python", hidden = true })
-
-function _PYTHON_TOGGLE()
-	python:toggle()
 end

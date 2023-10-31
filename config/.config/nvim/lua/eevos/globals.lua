@@ -1,11 +1,9 @@
 O = {
   shell = 'bash',
-
   database = {
     save_location = '~/.config/nvcode_db',
     auto_execute = 1
   },
-
   python = {
     -- @usage can be flake8
     linter = 'flake8',
@@ -19,7 +17,6 @@ O = {
       underline = true
     }
   },
-
   lua = {
     -- @usage can be 'lua-format' or 'lua-fmt'
     formatter = 'lua-format',
@@ -30,7 +27,6 @@ O = {
       underline = true
     }
   },
-	 
   tsserver = {
     -- @usage can be 'eslint'
     linter = 'eslint',

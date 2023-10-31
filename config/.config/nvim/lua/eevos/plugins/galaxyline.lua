@@ -1,4 +1,10 @@
+-- Galaxyline
+-- https://github.com/nvimdev/galaxyline.n vim
+
 local gl = require('galaxyline')
+local condition = require('galaxyline.condition')
+local gls = gl.section
+
 -- local colors = require('galaxyline.theme').default
 local colors = {
   -- bg = '#2E2E2E',
@@ -20,8 +26,7 @@ local colors = {
   error_red = '#F44747',
   info_yellow = '#FFCC66'
 }
-local condition = require('galaxyline.condition')
-local gls = gl.section
+
 gl.short_line_list = {
   'NvimTree',
   'vista',
@@ -29,7 +34,9 @@ gl.short_line_list = {
   'packer'
 }
 
-gls.left[1] = {
+-- Status bar modules
+
+gls.left[0] = {
   ViMode = {
     provider = function()
       local mode = vim.fn.mode()
@@ -66,22 +73,44 @@ gls.left[1] = {
         t = colors.blue
       }
       vim.api
-        .nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
-      return '▊ '
+          .nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
+      return '▊ ' .. mode
     end,
+    separator = ' ',
+    separator_highlight = {
+      'NONE',
+      colors.bg
+    },
     highlight = {
       colors.red,
       colors.bg
     }
   }
 }
-print(vim.fn.getbufvar(0, 'ts'))
-vim.fn.getbufvar(0, 'ts')
+
+-- gls.left[1] = {
+--   WorkingDirectory = {
+--     provider = function()
+-- 			local home = vim.env.HOME
+-- 			local pwd = vim.fn.getcwd()
+--       return ' ' .. pwd
+--     end,
+--     separator = ' ',
+--     separator_highlight = {
+--       'NONE',
+--       colors.bg
+--     },
+--     highlight = {
+--       colors.grey,
+--       colors.bg
+--     }
+--   }
+-- }
 
 gls.left[2] = {
   GitIcon = {
     provider = function()
-      return ' '
+      return ''
     end,
     condition = condition.check_git_workspace,
     separator = ' ',
@@ -123,6 +152,7 @@ gls.left[4] = {
     }
   }
 }
+
 gls.left[5] = {
   DiffModified = {
     provider = 'DiffModified',
@@ -134,11 +164,17 @@ gls.left[5] = {
     }
   }
 }
+
 gls.left[6] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
     icon = '  ',
+    separator = ' ',
+    separator_highlight = {
+      'NONE',
+      colors.bg
+    },
     highlight = {
       colors.red,
       colors.bg
@@ -168,7 +204,8 @@ gls.left[8] = {
   }
 }
 
-gls.right[1] = {
+
+gls.left[9] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
@@ -179,10 +216,10 @@ gls.right[1] = {
   }
 }
 
-gls.right[2] = {
+gls.left[10] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
-    icon = '  ',
+    icon = ' ',
     highlight = {
       colors.orange,
       colors.bg
@@ -190,7 +227,7 @@ gls.right[2] = {
   }
 }
 
-gls.right[3] = {
+gls.left[11] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
@@ -201,7 +238,7 @@ gls.right[3] = {
   }
 }
 
-gls.right[4] = {
+gls.left[12] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
@@ -212,27 +249,10 @@ gls.right[4] = {
   }
 }
 
-gls.right[5] = {
-  ShowLspClient = {
-    provider = 'GetLspClient',
-    condition = function()
-      local tbl = {
-        [' '] = true
-      }
-      if tbl[vim.bo.filetype] then
-        return false
-      end
-      return true
-    end,
-    icon = '  ',
-    highlight = {
-      colors.info_yellow,
-      colors.bg
-    }
-  }
-}
+-- Right side of the status Bar
 
-gls.right[6] = {
+
+gls.right[1] = {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' ',
@@ -247,7 +267,7 @@ gls.right[6] = {
   }
 }
 
-gls.right[7] = {
+gls.right[2] = {
   PerCent = {
     provider = 'LinePercent',
     separator = '',
@@ -262,7 +282,7 @@ gls.right[7] = {
   }
 }
 
-gls.right[8] = {
+gls.right[3] = {
   Tabstop = {
     provider = function()
       return " " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
@@ -280,7 +300,32 @@ gls.right[8] = {
   }
 }
 
-gls.right[9] = {
+gls.right[4] = {
+  ShowLspClient = {
+    provider = 'GetLspClient',
+    condition = function()
+      local tbl = {
+        [' '] = true
+      }
+      if tbl[vim.bo.filetype] then
+        return false
+      end
+      return true
+    end,
+    icon = ' ',
+    separator = ' ',
+    separator_highlight = {
+      'NONE',
+      colors.bg
+    },
+    highlight = {
+      colors.info_yellow,
+      colors.bg
+    }
+  }
+}
+
+gls.right[5] = {
   BufferType = {
     provider = 'FileTypeName',
     condition = condition.hide_in_width,
@@ -290,13 +335,13 @@ gls.right[9] = {
       colors.bg
     },
     highlight = {
-      colors.grey,
+      colors.blue,
       colors.bg
     }
   }
 }
 
-gls.right[10] = {
+gls.right[9] = {
   FileEncode = {
     provider = 'FileEncode',
     condition = condition.hide_in_width,
@@ -311,6 +356,8 @@ gls.right[10] = {
     }
   }
 }
+
+-- Short status bar modules
 
 gls.short_line_left[1] = {
   SFileName = {
