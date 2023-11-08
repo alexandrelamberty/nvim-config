@@ -1,8 +1,13 @@
--- :LspInstall bashls
+-- bashls LSP configuration
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/bashls.lua
-return {
-  filetypes = {
-    "sh",
-    "zsh"
-  }
+
+local opts = {
+	on_attach = require("eevos.lsp.handlers").on_attach,
+	capabilities = require("eevos.lsp.handlers").capabilities,
+	filetypes = {
+		"sh",
+		"zsh"
+	}
 }
+
+return opts

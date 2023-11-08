@@ -1,14 +1,21 @@
+-- HTML LSP configuration
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
+-- https://github.com/hrsh7th/vscode-langservers-extracted
 
--- Add support for snippet
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require("eevos.lsp.handlers").capabilities
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.html.setup {
-  cmd = {
-    DATA_PATH ..
-      "/lsp_servers/html/node_modules/.bin/vscode-html-language-server",
-    "--stdio"
-  },
-  on_attach = require'eevos.lsp'.common_on_attach,
-  capabilities = capabilities
+local opts = {
+	capabilities = capabilities,
+	filetypes = { "html" },
+	init_options = {
+		configurationSection = { "html", "css", "javascript" },
+		embeddedLanguages = {
+			css = true,
+			javascript = true
+		},
+		provideFormatter = true
+	}
 }
+
+return opts

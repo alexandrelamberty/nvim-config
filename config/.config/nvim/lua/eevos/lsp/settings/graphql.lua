@@ -1,4 +1,8 @@
--- npm install -g graphql-language-service-cli
-require'lspconfig'.graphql.setup {
-  on_attach = require'eevos.lsp'.common_on_attach
+-- graphqlls LSP configuration
+
+local opts = {
+	on_attach = require("eevos.lsp.handlers").on_attach,
+	capabilities = require("eevos.lsp.handlers").capabilities,
 }
+
+return opts

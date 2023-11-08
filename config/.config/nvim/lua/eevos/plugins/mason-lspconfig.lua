@@ -1,13 +1,29 @@
 --- mason-lspconfig
 -- https://github.com/williamboman/mason-lspconfig.nvim
-
 require('mason-lspconfig').setup({
 	-- Replace the language servers listed here
 	-- with the ones you want to install
+
+	-- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 	ensure_installed = {
+		-- 'bashls',
+		'clangd',
+		-- 'cmake',
+		'gopls',
 		'lua_ls',
-		'html'
+		'cssls',
+		'html',
+		'jsonls',
+		'yamlls',
+		'lemminx',
+		-- 'markdownlint',
+		'dockerls',
+		'sqlls',
+		--
+		'tsserver',
+		'tailwindcss',
 	},
+	automatic_installation = false, -- TODO: Check this to use lsp-config settings ?
 	-- handlers = {
 	-- 	lsp_zero.default_setup,
 	-- }

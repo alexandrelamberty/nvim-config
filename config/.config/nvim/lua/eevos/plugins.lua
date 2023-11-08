@@ -21,11 +21,6 @@ return require("packer").startup(function(use)
 	-- Package manager
 	use "wbthomason/packer.nvim"
 
-	-- Utils
-	use "nvim-lua/popup.nvim"
-	use "nvim-lua/plenary.nvim"
-
-
 	-- Helper
 	use "windwp/nvim-autopairs"
 	use "windwp/nvim-ts-autotag"
@@ -38,24 +33,6 @@ return require("packer").startup(function(use)
 	-- Command palette
 	use "folke/which-key.nvim"
 
-	-- LSP
-	use {
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
-		requires = {
-			--- Uncomment these if you want to manage LSP servers from neovim
-			{ 'williamboman/mason.nvim' },
-			{ 'williamboman/mason-lspconfig.nvim' },
-
-			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },
-			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'L3MON4D3/LuaSnip' },
-		}
-	}
-
 	-- Completion
 	use "hrsh7th/nvim-cmp"
 	use "hrsh7th/cmp-nvim-lsp"
@@ -65,26 +42,20 @@ return require("packer").startup(function(use)
 	use "hrsh7th/cmp-path"
 	use "hrsh7th/cmp-cmdline"
 	use "saadparwaiz1/cmp_luasnip"
-	use "onsails/lspkind-nvim" -- TODO: check utility
 	use "L3MON4D3/LuaSnip"
-
+	use "onsails/lspkind-nvim" -- TODO: check utility
 
 	-- Debugging
 	use "mfussenegger/nvim-dap"
 	use "rcarriga/nvim-dap-ui"
 
-	-- Telescope
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.2',
-		requires = { { 'nvim-lua/plenary.nvim' } }
-	}
-	use "kishikaisei/telescope-js-package-scripts.nvim"
+	-- File Explorer
+	use "kevinhwang91/rnvimr"
 
-
-	-- Treesitter
+	-- Git client
 	use {
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate"
+		"TimUntersberger/neogit",
+		requires = "nvim-lua/plenary.nvim"
 	}
 
 	-- Git gutter signs
@@ -95,11 +66,48 @@ return require("packer").startup(function(use)
 		}
 	}
 
-	-- Git client
+	-- LSP
 	use {
-		"TimUntersberger/neogit",
-		requires = "nvim-lua/plenary.nvim"
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+		requires = {
+			-- LSP Support
+			-- Completion
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'L3MON4D3/LuaSnip' },
+		}
 	}
+
+	-- Status bar
+	use "glepnir/galaxyline.nvim"
+
+	-- Themes & icons
+	use 'marko-cerovac/material.nvim'
+	use 'nvim-tree/nvim-web-devicons'
+
+	-- Terminal
+	use "akinsho/toggleterm.nvim"
+	use "voldikss/vim-floaterm"
+
+	-- Telescope
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.2',
+		requires = { { 'nvim-lua/plenary.nvim' } }
+	}
+	use "kishikaisei/telescope-js-package-scripts.nvim"
+
+	-- Treesitter
+	-- use {
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	run = ":TSUpdate"
+	-- }
+	use({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		after = "nvim-treesitter",
+		requires = "nvim-treesitter/nvim-treesitter",
+	})
 
 	-- Tree File Explorer
 	use {
@@ -109,20 +117,9 @@ return require("packer").startup(function(use)
 		}
 	}
 
-	-- File Explorer
-	use "kevinhwang91/rnvimr"
-
-	-- Terminal
-	use "akinsho/toggleterm.nvim"
-	use "voldikss/vim-floaterm"
-
-	-- Status bar
-	use "glepnir/galaxyline.nvim"
-
-	-- Themes & icons
-	use "kaicataldo/material.vim"
-	use "kyazdani42/nvim-web-devicons"
-	-- use 'nvim-tree/nvim-web-devicons'
+	-- Utils
+	use "nvim-lua/popup.nvim"
+	use "nvim-lua/plenary.nvim"
 
 	if packer_bootstrap then
 		require('packer').sync()

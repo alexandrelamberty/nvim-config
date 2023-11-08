@@ -7,8 +7,8 @@ Setup for everyday text editing and programming.
 ## Roadmap v 0.0.1
 
 - [ ] Completion
-- [ ] Spelling, dict
-- [ ] Snippets
+- [ ] Spelling
+- [ ] Snippet
 - [ ] LSP
 - [ ] DAP
 
@@ -16,6 +16,7 @@ Setup for everyday text editing and programming.
 
 - Explorer
 - File Manager
+= Git
 - Terminal
 - Status line
 - Language Server Protocol
@@ -23,19 +24,59 @@ Setup for everyday text editing and programming.
 
 ## Requirements
 
-- NVIM v0.6.0
+- [NVIM]() v0.8.0
+- [stow](https://www.gnu.org/software/stow/manual/stow.html)
 
 ## Installation
 
-Check and run the `ìnstall.sh` script
+The installation script require [stow](https://www.gnu.org/software/stow/manual/stow.html) to be installed on the system.
 
-Launch Neovim and run the command to install the plugins dependencies.
+Running the script will remove the `$HOME/.config/nvim` directory!
+
+Run the `ìnstall.sh` script
+
+```shell
+./install
+```
+
+Launch Neovim
+
+```shell
+nvim
+```
+
+and run the command to install the plugins dependencies.
 
 ```vim
 :PackerInstall
 ```
 
+Verify that all the plugins have been correctly installed:
+
+```vim
+:PackerStatus
+```
+
+Verify the Neovim health:
+
+```vim
+:CheckHealth
+```
+
 ## Configuration
+
+The configuration reside in the [`/config/.config/nvim`](config/.config/nvim) directory.
+Each plugins has is configuration in `lua.eevos.plugins`
+
+> explain folder structure and where are config located
+
+### Completions
+
+### Spelling
+
+### Snippet
+
+### Git
 
 ### LSP
 
@@ -43,47 +84,65 @@ Launch Neovim and run the command to install the plugins dependencies.
 
 ### Plugins
 
-All the plugins used in this configuration. I tend to keep it small as
-possible.
+## Keybindings
 
-```vim
-:PackerStatus
-```
+### Tree File System Explorer
 
-vimvi
-
-```
- * LuaSnip
- * cmp-buffer
- * cmp-cmdline
- * cmp-nvim-lsp
- * cmp-nvim-lua
- * cmp-path
- * cmp_luasnip
- * galaxyline.nvim
- * gitsigns.nvim
- * lspkind-nvim
- * lspsaga.nvim
- * material.vim
- * neogit
- * null-ls.nvim
- * nvim-autopairs
- * nvim-bqf
- * nvim-cmp
- * nvim-comment
- * nvim-dap
- * nvim-dap-ui
- * nvim-lsp-installer
- * nvim-lspconfig
- * nvim-markdown-preview
- * nvim-tree.lua
- * nvim-treesitter
- * nvim-ts-autotag
- * nvim-web-devicons
- * packer.nvim
- * plenary.nvim
- * popup.nvim
- * rnvimr
- * telescope.nvim
- * toggleterm.nvim
- * which-key.nvim
+The file ex
+| K | A | LUA
+|-|-|-
+| `<C-]>`|          CD                         |nvim-tree-api.tree hange_root_to_node()|
+| `<C-e>`|          Open: In Place             |nvim-tree-api.node.open.replace_tree_buffer()|
+| `<C-k>`|          Info                       |nvim-tree-api.node.show_info_popup()|
+| `<C-r>`|          Rename: Omit Filename      |nvim-tree-api.fs.rename_sub()|
+| `<C-t>`|          Open: New Tab              |nvim-tree-api.node.open.tab()|
+| `<C-v>`|          Open: Vertical Split       |nvim-tree-api.node.open.vertical()|
+| `<C-x>`|          Open: Horizontal Split     |nvim-tree-api.node.open.horizontal()|
+| `<BS>` |          Close Directory            |nvim-tree-api.node.navigate.parent_close()|
+| `<CR>` |          Open                       |nvim-tree-api.node.open.edit()|
+| `<Tab>`|          Open Preview               |nvim-tree-api.node.open.preview()|
+| `>`|          Next Sibling               |nvim-tree-api.node.navigate.sibling.next()|
+| `<`|          Previous Sibling           |nvim-tree-api.node.navigate.sibling.prev()|
+| `.`|          Run Command                |nvim-tree-api.node.run.cmd()|
+| `-`|          Up                         |nvim-tree-api.tree.change_root_to_parent()|
+| `a`|  Create                     |nvim-tree-api.fs.create()|
+| `bd`| Delete Bookmarked          |nvim-tree-api.marks.bulk.delete()|
+| `bt`| Trash Bookmarked           |nvim-tree-api.marks.bulk.trash()|
+| `bmv`| Move Bookmarked            |nvim-tree-api.marks.bulk.move()|
+| `B`| Toggle Filter: No Buffer   |nvim-tree-api.tree.toggle_no_buffer_filter()|
+| `c`| Copy                       |nvim-tree-api.fs.copy.node()|
+| `C`| Toggle Filter: Git Clean   |nvim-tree-api.tree.toggle_git_clean_filter()|
+| `[c`|          Prev Git                   |nvim-tree-api.node.navigate.git.prev()|
+| `]c`    |          Next Git                   |nvim-tree-api.node.navigate.git.next()|
+| `d`     |          Delete                     |nvim-tree-api.fs.remove()|
+| `D`     |          Trash                      |nvim-tree-api.fs.trash()|
+| `E`     |          Expand All                 |nvim-tree-api.tree.expand_all()|
+| `e`     |          Rename: Basename           |nvim-tree-api.fs.rename_basename()|
+| `]e`    |          Next Diagnostic            |nvim-tree-api.node.navigate.diagnostics.next()|
+| `[e`    |          Prev Diagnostic            |nvim-tree-api.node.navigate.diagnostics.prev()|
+| `F`     |          Clean Filter               |nvim-tree-api.live_filter.clear()|
+| `f`     |          Filter                     |nvim-tree-api.live_filter.start()|
+| `g?`    |          Help                       |nvim-tree-api.tree.toggle_help()|
+| `gy`   |          Copy Absolute Path         |nvim-tree-api.fs.copy.absolute_path()|
+| `H`|          Toggle Filter: Dotfiles    |nvim-tree-api.tree.toggle_hidden_filter()|
+| `I`|          Toggle Filter: Git Ignore  |nvim-tree-api.tree.toggle_gitignore_filter()|
+| `J`|          Last Sibling               |nvim-tree-api.node.navigate.sibling.last()|
+| `K`|          First Sibling              |nvim-tree-api.node.navigate.sibling.first()|
+| `m`|          Toggle Bookmark            |nvim-tree-api.marks.toggle()|
+| `o`|          Open                       |nvim-tree-api.node.open.edit()|
+| `O`|          Open: No Window Picker     |nvim-tree-api.node.open.no_window_picker()|
+| `p`|          Paste                      |nvim-tree-api.fs.paste()|
+| `P`|          Parent Directory           |nvim-tree-api.node.navigate.parent()|
+| `q`|          Close                      |nvim-tree-api.tree.close()|
+| `r`|          Rename                     |nvim-tree-api.fs.rename()|
+| `R`|          Refresh                    |nvim-tree-api.tree.reload()|
+| `s`|          Run System                 |nvim-tree-api.node.run.system()|
+| `S`|          Search                     |nvim-tree-api.tree.search_node()|
+| `u`|          Rename: Full Path          |nvim-tree-api.fs.rename_full()|
+| `U`|          Toggle Filter: Hidden      |nvim-tree-api.tree.toggle_custom_filter()|
+| `W`|          Collapse                   |nvim-tree-api.tree.collapse_all()|
+| `x`|          Cut                        |nvim-tree-api.fs.cut()|
+| `y`|          Copy Name                  |nvim-tree-api.fs.copy.filename()|
+| `Y`|    Copy Relative Path         |nvim-tree-api.fs.copy.relative_path()|
+| `<2-Left|Mouse>`   | Open                       |nvim-tree-api.node.open.edit()|
+| `<2-Righ|tMouse>`  | CD | nvim-tree-api.tree.change_root_to_node()|

@@ -1,9 +1,12 @@
--- :LspInstall cssls
-require'lspconfig'.cssls.setup {
-  cmd = {
-    DATA_PATH ..
-      "/lsp_servers/cssls/node_modules/.bin/vscode-css-language-server",
-    "--stdio"
-  },
-  on_attach = require'eevos.lsp'.common_on_attach
+-- cssls LSP configuration
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#cssls
+
+local capabilities = require("eevos.lsp.handlers").capabilities
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local opts = {
+	on_attach = require("eevos.lsp.handlers").on_attach,
+	capabilities = capabilities,
 }
+
+return opts

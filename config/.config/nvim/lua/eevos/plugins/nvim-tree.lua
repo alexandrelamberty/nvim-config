@@ -1,5 +1,7 @@
--- NvimTree
+-- NvimTree setup
 -- https://github.com/nvim-tree/nvim-tree.lua
+
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true, desc="Toggle comment" })
 
 require 'nvim-tree'.setup {
 	disable_netrw = true,
@@ -35,7 +37,7 @@ require 'nvim-tree'.setup {
 	view = {
 		width = 40,
 		-- height = 30,
-		side = 'left',
+		side = 'right',
 		-- auto_resize = false,
 		-- mappings = {
 		--   custom_only = false,
@@ -66,6 +68,3 @@ vim.g.nvim_tree_icons = {
 		symlink = ""
 	}
 }
-
-
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })

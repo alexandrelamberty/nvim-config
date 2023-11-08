@@ -1,8 +1,9 @@
---- Lspconfig handlers module
--- @module handlers
+-- LSP module
+-- @module lsp
 
 local M = {}
 
+-- Set up LSP handlers configuration. Theses can be overwritten in the LSP configurations.
 M.setup = function()
 	-- https://neovim.io/doc/user/lsp.html#lsp-api
 
@@ -32,12 +33,11 @@ M.setup = function()
 	vim.lsp.handlers["textDocument/references"] = vim.lsp.with(
 		on_references, {
 			-- Use location list instead of quickfix list
-			loclist = true,
+			loclist = false,
 		}
 	)
 end
 
--- TODO: move diagnostic module here and check server publishDiagnostics
 -- Set autocommands conditional on server_capabilities
 -- https://neovim.io/doc/user/lsp.html#lsp-highlight
 local function lsp_highlight_document(client)
@@ -71,7 +71,7 @@ local function lsp_highlight_document(client)
 	end
 end
 
--- Set keymaps for lsp
+-- Set keybindings
 local function lsp_keymaps(bufnr)
 	local function map(mode, l, r, opts)
 		opts = opts or {}
@@ -114,7 +114,6 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	print("LSP attached to buffer", client.name)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
 		client.server_capabilities.documentRangeFormattingProvider = false
@@ -130,9 +129,9 @@ M.on_attach = function(client, bufnr)
 	-- lsp_diagnostic(client)
 end
 
+-- Capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
--- TODO: remove and add require for plugin
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
 	return

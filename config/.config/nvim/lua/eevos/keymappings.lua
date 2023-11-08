@@ -22,7 +22,6 @@ vim.api.nvim_set_keymap('n', '<S-TAB>', ':bprevious<CR>', { noremap = true, sile
 -- Move selected line / block of text in visual mode
 vim.api.nvim_set_keymap('x', 'K', ':move \'<-2<CR>gv-gv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('x', 'J', ':move \'>+1<CR>gv-gv', { noremap = true, silent = true })
-
 vim.api.nvim_set_keymap('v', 'J', ':move \'>+1<CR>gv-gv', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', 'K', ':move \'<-2<CR>gv-gv', { noremap = true, silent = true })
 
@@ -50,19 +49,6 @@ vim.keymap.set('n', '<leader>r', ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 -- Reload config
 -- https://neovim.discourse.group/t/reload-init-lua-and-all-require-d-scripts/971
 -- not working !!!
-function _G.ReloadConfig()
-	local hls_status = vim.v.hlsearch
-	for name, _ in pairs(package.loaded) do
-		if name:match('^cnull') then
-			package.loaded[name] = nil
-		end
-	end
-
-	dofile(vim.env.MYVIMRC)
-	if hls_status == 0 then
-		vim.opt.hlsearch = false
-	end
-end
-
-vim.api.nvim_set_keymap('n', '<Leader>-', '<Cmd>lua ReloadConfig()<CR>', { silent = true, noremap = true })
-vim.cmd('command! ReloadConfig lua ReloadConfig()')
+vim.api.nvim_set_keymap('n', '<Leader>-', "<cmd>lua require 'eevos.utils'.ReloadConfig()<cr>",
+	{ silent = true, noremap = true })
+vim.cmd("command! ReloadConfig lua require 'eevos.utils'.ReloadConfig()")

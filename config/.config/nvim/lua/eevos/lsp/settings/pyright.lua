@@ -1,10 +1,12 @@
 -- pyright
 return {
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = "off"
-      }
-    }
-  }
+	on_attach = require("eevos.lsp.handlers").on_attach,
+	capabilities = require("eevos.lsp.handlers").capabilities,
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "off"
+			}
+		}
+	}
 }
