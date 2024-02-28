@@ -4,8 +4,6 @@
 -- https://github.com/redhat-developer/yaml-language-server
 
 local opts = {
-	on_attach = require("eevos.lsp.handlers").on_attach,
-	capabilities = require("eevos.lsp.handlers").capabilities,
 	settings = {
 		yaml = {
 			trace = {

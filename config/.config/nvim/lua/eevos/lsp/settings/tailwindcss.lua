@@ -2,8 +2,6 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/tailwindcss.lua
 -- https://github.com/tailwindlabs/tailwindcss-intellisense
 return {
-	on_attach = require("eevos.lsp.handlers").on_attach,
-	capabilities = require("eevos.lsp.handlers").capabilities,
 	filetypes = {
 		"html"
 	}

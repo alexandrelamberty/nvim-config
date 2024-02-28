@@ -1,7 +1,10 @@
--- Neovim Diagnostic module
--- https://neovim.io/doc/user/diagnostic.html
--- https://neovim.io/doc/user/lsp.html#lsp-diagnostic
--- https://neovim.io/doc/user/diagnostic.html#diagnostic-signs
+--- Diagnostic 
+-- @module diagnostic
+-- @see https://neovim.io/doc/user/diagnostic.html
+-- @see https://neovim.io/doc/user/lsp.html#lsp-diagnostic
+
+-- define signs used by diagnostic
+-- @see https://neovim.io/doc/user/diagnostic.html#diagnostic-signs
 local signs = {
 	{
 		name = "DiagnosticSignError",
@@ -29,17 +32,13 @@ for _, sign in ipairs(signs) do
 	})
 end
 
--- https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config()
+-- diagnostic config
+-- @see https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config()
 local config = {
-	-- disable virtual text
-	virtual_text = true,
-	-- show signs
+	virtual_text = true, 
 	signs = {
 		active = signs
 	},
-	update_in_insert = true,
-	underline = true,
-	severity_sort = true,
 	float = {
 		focusable = false,
 		style = "minimal",
@@ -47,7 +46,10 @@ local config = {
 		source = "always",
 		header = "diagnostic",
 		prefix = ""
-	}
+	},
+	update_in_insert = true,
+	underline = true,
+	severity_sort = true,
 }
 
 vim.diagnostic.config(config)

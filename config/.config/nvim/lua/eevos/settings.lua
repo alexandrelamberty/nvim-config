@@ -39,9 +39,14 @@ vim.o.clipboard = "unnamedplus" -- Copy paste between vim and everything else
 vim.opt.backup = false
 vim.opt.swapfile = false -- Disable swapfile
 
-vim.opt.scrolloff = 8    -- Lines of context
+vim.opt.scrolloff = 8    -- Keep lines of context
+
+-- Format
+-- vim.opt.formatoptions:remove('r') 
+-- vim.opt.formatoptions:remove { "c", "r", "o" }
 
 -- Spell
+-- @see eevos.spell
 vim.opt.spelllang = 'en_us'
 vim.opt.spell = true
 

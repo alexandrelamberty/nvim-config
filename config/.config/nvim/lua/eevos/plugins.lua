@@ -30,6 +30,9 @@ return require("packer").startup(function(use)
 	-- Replace ?
 	use "davidgranstrom/nvim-markdown-preview"
 
+	-- Code Completion
+	use 'Exafunction/codeium.vim'
+
 	-- Command palette
 	use "folke/which-key.nvim"
 
@@ -52,6 +55,9 @@ return require("packer").startup(function(use)
 	-- File Explorer
 	use "kevinhwang91/rnvimr"
 
+	-- File Outline
+	use 'simrat39/symbols-outline.nvim'
+
 	-- Git client
 	use {
 		"TimUntersberger/neogit",
@@ -65,6 +71,9 @@ return require("packer").startup(function(use)
 			'nvim-lua/plenary.nvim'
 		}
 	}
+
+	-- Harpoon
+	use "ThePrimeagen/harpoon"
 
 	-- LSP
 	use {

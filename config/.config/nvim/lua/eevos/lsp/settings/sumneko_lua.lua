@@ -1,6 +1,7 @@
-return {
-	on_attach = require("eevos.lsp.handlers").on_attach,
-	capabilities = require("eevos.lsp.handlers").capabilities,
+--- sunmenko_lua LSP configuration
+-- @module eevos.lsp.settings.sumneko_lua
+
+local opts = {
   settings = {
     Lua = {
       diagnostics = {
@@ -17,3 +18,5 @@ return {
     }
   }
 }
+
+return opts

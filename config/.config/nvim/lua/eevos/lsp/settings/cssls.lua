@@ -5,7 +5,6 @@ local capabilities = require("eevos.lsp.handlers").capabilities
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local opts = {
-	on_attach = require("eevos.lsp.handlers").on_attach,
 	capabilities = capabilities,
 }
 

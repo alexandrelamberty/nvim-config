@@ -2,13 +2,12 @@
 -- https://neovim.io/
 
 -- Core
-require "eevos.globals"
 require 'eevos.settings'
-require 'eevos.autocommands'
-require 'eevos.colorscheme' -- after plugin ?
+require 'eevos.autocommand'
 require 'eevos.diagnostic'
-require 'eevos.keymappings'
+require 'eevos.keymap'
 require 'eevos.utils'
+require 'eevos.highlight' -- after plugin ?
 
 -- Plugins
 require 'eevos.plugins' -- need to be first
@@ -25,10 +24,14 @@ require 'eevos.plugins.neogit'
 require 'eevos.plugins.nvim-lspconfig' -- always after mason and mason-lspconfig
 require 'eevos.plugins.nvim-tree'
 require 'eevos.plugins.rnvimr'
+require 'eevos.plugins.symbols-outline'
+require 'eevos.plugins.telescope-local'
 require 'eevos.plugins.telescope'
 require "eevos.plugins.toggleterm"
 require 'eevos.plugins.treesitter'
 require 'eevos.plugins.whichkey'
+
+require 'ikbs-nvim'
 
 -- LSP
 require "eevos.lsp"
