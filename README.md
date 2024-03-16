@@ -66,7 +66,7 @@ Verify the Neovim health:
 ## Configuration
 
 The configuration reside in the [`/config/.config/nvim`](config/.config/nvim) directory.
-Each plugins has is configuration in `lua.eevos.plugins`
+Each plugins has it's own configuration in `lua.eevos.plugins`
 
 > explain folder structure and where are config located
 
@@ -74,7 +74,7 @@ Each plugins has is configuration in `lua.eevos.plugins`
 
 ### Spelling
 
-### Snippet
+### Git Signs
 
 ### Git
 
