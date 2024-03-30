@@ -1,6 +1,7 @@
 -- Galaxyline
 -- https://github.com/nvimdev/galaxyline.n vim
 
+require('nvim-web-devicons').setup()
 local gl = require('galaxyline')
 local condition = require('galaxyline.condition')
 local gls = gl.section
@@ -88,26 +89,44 @@ gls.left[0] = {
   }
 }
 
--- gls.left[1] = {
---   WorkingDirectory = {
---     provider = function()
--- 			local home = vim.env.HOME
--- 			local pwd = vim.fn.getcwd()
---       return ' ' .. pwd
---     end,
---     separator = ' ',
---     separator_highlight = {
---       'NONE',
---       colors.bg
---     },
---     highlight = {
---       colors.grey,
---       colors.bg
---     }
---   }
--- }
+gls.left[1] = {
+  FolderIconn = {
+    provider = function()
+      return ' '
+    end,
+    separator = ' ',
+    separator_highlight = {
+      'NONE',
+      colors.bg
+    },
+    highlight = {
+      colors.cyan,
+      colors.bg
+    }
+  }
+}
 
-gls.left[2] = {
+ gls.left[2] = {
+   WorkingDirectory = {
+     provider = function()
+ 			local pwd = vim.fn.getcwd()
+			local directory = vim.fn.fnamemodify(pwd, ':t')
+			return directory
+			end,
+     separator = ' ',
+     separator_highlight = {
+       'NONE',
+       colors.bg
+     },
+     highlight = {
+       colors.grey,
+       colors.bg
+     }
+
+   }
+ }
+
+gls.left[3] = {
   GitIcon = {
     provider = function()
       return ''
@@ -125,7 +144,7 @@ gls.left[2] = {
   }
 }
 
-gls.left[3] = {
+gls.left[4] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = condition.check_git_workspace,
@@ -141,7 +160,7 @@ gls.left[3] = {
   }
 }
 
-gls.left[4] = {
+gls.left[5] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
@@ -153,7 +172,7 @@ gls.left[4] = {
   }
 }
 
-gls.left[5] = {
+gls.left[6] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = condition.hide_in_width,
@@ -165,7 +184,7 @@ gls.left[5] = {
   }
 }
 
-gls.left[6] = {
+gls.left[7] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
@@ -182,7 +201,7 @@ gls.left[6] = {
   }
 }
 
-gls.left[7] = {
+gls.left[8] = {
   FileIcon = {
     provider = 'FileIcon',
     condition = condition.buffer_not_empty,
@@ -193,7 +212,7 @@ gls.left[7] = {
   }
 }
 
-gls.left[8] = {
+gls.left[9] = {
   SFileName = {
     provider = 'SFileName',
     condition = condition.buffer_not_empty,
@@ -205,7 +224,7 @@ gls.left[8] = {
 }
 
 
-gls.left[9] = {
+gls.left[10] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
@@ -227,7 +246,7 @@ gls.left[10] = {
   }
 }
 
-gls.left[11] = {
+gls.left[12] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
@@ -238,7 +257,7 @@ gls.left[11] = {
   }
 }
 
-gls.left[12] = {
+gls.left[13] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
@@ -251,47 +270,16 @@ gls.left[12] = {
 
 -- Right side of the status Bar
 
-
-gls.right[1] = {
-  LineInfo = {
-    provider = 'LineColumn',
-    separator = ' ',
-    separator_highlight = {
-      'NONE',
-      colors.bg
-    },
-    highlight = {
-      colors.grey,
-      colors.bg
-    }
-  }
-}
-
-gls.right[2] = {
-  PerCent = {
-    provider = 'LinePercent',
-    separator = '',
-    separator_highlight = {
-      'NONE',
-      colors.bg
-    },
-    highlight = {
-      colors.grey,
-      colors.bg
-    }
-  }
-}
-
 gls.right[3] = {
   Tabstop = {
     provider = function()
-      return " " .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
+      return vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
     end,
     condition = condition.hide_in_width,
-    separator = ' ',
+    separator = ' ',
     separator_highlight = {
-      'NONE',
-      colors.bg
+      colors.green,
+			colors.bg
     },
     highlight = {
       colors.grey,
@@ -301,31 +289,6 @@ gls.right[3] = {
 }
 
 gls.right[4] = {
-  ShowLspClient = {
-    provider = 'GetLspClient',
-    condition = function()
-      local tbl = {
-        [' '] = true
-      }
-      if tbl[vim.bo.filetype] then
-        return false
-      end
-      return true
-    end,
-    icon = ' ',
-    separator = ' ',
-    separator_highlight = {
-      'NONE',
-      colors.bg
-    },
-    highlight = {
-      colors.info_yellow,
-      colors.bg
-    }
-  }
-}
-
-gls.right[5] = {
   BufferType = {
     provider = 'FileTypeName',
     condition = condition.hide_in_width,
@@ -340,6 +303,32 @@ gls.right[5] = {
     }
   }
 }
+
+gls.right[5] = {
+  ShowLspClient = {
+    provider = 'GetLspClient',
+    condition = function()
+      local tbl = {
+        [' '] = true
+      }
+      if tbl[vim.bo.filetype] then
+        return false
+      end
+      return true
+    end,
+    icon = 'ﯟ ',
+    separator = ' ',
+    separator_highlight = {
+      'NONE',
+      colors.bg
+    },
+    highlight = {
+      colors.info_yellow,
+      colors.bg
+    }
+  }
+}
+
 
 gls.right[9] = {
   FileEncode = {
@@ -357,6 +346,85 @@ gls.right[9] = {
   }
 }
 
+gls.right[10] = {
+  LineInfo = {
+    provider = 'LineColumn',
+    separator = ' ',
+    separator_highlight = {
+      'NONE',
+      colors.bg
+    },
+    highlight = {
+      colors.grey,
+      colors.bg
+    }
+  }
+}
+
+gls.right[11] = {
+  PerCent = {
+    provider = 'LinePercent',
+    separator = ' ',
+    separator_highlight = {
+      'NONE',
+      colors.bg
+    },
+    highlight = {
+      colors.grey,
+      colors.bg
+    }
+  }
+}
+
+gls.right[12] = {
+  ViMode = {
+    provider = function()
+      NVIM_MODES = {
+        n = 'NORMAL',
+        i = 'INSERT',
+        c = 'COMMAND',
+        v = 'VISUAL LINE',
+        V = 'VISUAL',
+        R = 'REPLACE'
+      }
+      -- auto change color according the vim mode
+      local mode_color = {
+        n = colors.blue,
+        i = colors.green,
+        v = colors.purple,
+        [''] = colors.purple,
+        V = colors.purple,
+        c = colors.magenta,
+        no = colors.blue,
+        s = colors.orange,
+        S = colors.orange,
+        [''] = colors.orange,
+        ic = colors.yellow,
+        R = colors.red,
+        Rv = colors.red,
+        cv = colors.blue,
+        ce = colors.blue,
+        r = colors.cyan,
+        rm = colors.cyan,
+        ['r?'] = colors.cyan,
+        ['!'] = colors.blue,
+        t = colors.blue
+      }
+      vim.api
+          .nvim_command('hi GalaxyViMode guifg=' .. mode_color[vim.fn.mode()])
+      return '▊'
+    end,
+    separator = ' ',
+    separator_highlight = {
+      'NONE',
+      colors.bg
+    },
+    highlight = {
+      colors.red,
+      colors.bg
+    }
+  }
+}
 -- Short status bar modules
 
 gls.short_line_left[1] = {

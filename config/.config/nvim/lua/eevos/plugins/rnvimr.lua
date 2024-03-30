@@ -9,4 +9,4 @@ vim.g.rnvimr_bw_enable = 1
 
 -- Keymappings
 
-vim.api.nvim_set_keymap('n', '-', ':RnvimrToggle<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '-', ':RnvimrToggle<CR>', { noremap = true, silent = true })

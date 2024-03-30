@@ -28,7 +28,7 @@ require 'nvim-treesitter.configs'.setup {
 		enable = true,
 		enable_autocmd = false,
 	},
- 	
+
 	-- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	textobjects = {
 		select = {

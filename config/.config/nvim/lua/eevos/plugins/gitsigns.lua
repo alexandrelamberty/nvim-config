@@ -68,10 +68,10 @@ require('gitsigns').setup {
 		end, { expr = true, desc = "Previous Hunk" })
 
 		-- Actions
-		map('n', '<leader>hs', gs.stage_hunk, { desc = "Hunk Stage" })
-		map('n', '<leader>hr', gs.reset_hunk, { desc = "Hunk Reset" })
 		map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end, { desc = "Hunk stage" })
 		map('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end, { desc = "Hunk reset" })
+		map('n', '<leader>hs', gs.stage_hunk, { desc = "Hunk Stage" })
+		map('n', '<leader>hr', gs.reset_hunk, { desc = "Hunk Reset" })
 		map('n', '<leader>hS', gs.stage_buffer, { desc = "Hunk Stage" })
 		map('n', '<leader>hu', gs.undo_stage_hunk, { desc = "Hunk Undo" })
 		map('n', '<leader>hR', gs.reset_buffer, { desc = "Hunk reset" })

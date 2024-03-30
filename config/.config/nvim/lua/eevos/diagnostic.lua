@@ -35,7 +35,7 @@ end
 -- diagnostic config
 -- @see https://neovim.io/doc/user/diagnostic.html#vim.diagnostic.config()
 local config = {
-	virtual_text = true, 
+	virtual_text = true,
 	signs = {
 		active = signs
 	},

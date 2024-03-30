@@ -80,7 +80,7 @@ cmp.setup {
 		},
 		format = function(entry, vim_item)
 			-- Kind icons
-			-- This concatonates the icons with the name of the item kind
+			-- This concatenate the icons with the name of the item kind
 			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind],
 				vim_item.kind)
 			-- Source

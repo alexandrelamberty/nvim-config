@@ -1,27 +1,9 @@
 --- lspconfig module
 -- https://github.com/neovim/nvim-lspconfig/
 
-local lspconfig = require('lspconfig')
-
--- Need to be shared with mason and mason lspconfig
-local servers = {
-	-- 'bashls',
-	'clangd',
-	-- 'cmake',
-	'gopls',
-	'lua_ls',
-	'cssls',
-	'html',
-	'jsonls',
-	'yamlls',
-	'lemminx',
-	-- 'markdownlint',
-	'dockerls',
-	'sqlls',
-	--
-	'tsserver',
-	'tailwindcss',
-}
+require('lspconfig')
+-- FIXME:  Need to be shared with mason and mason lspconfig
+local servers = require('eevos.plugins.nvim-lspconfig-servers')
 
 -- Setup LSP configurations
 -- https://linovox.com/configuring-language-server-protocol-lsp-in-neovim/

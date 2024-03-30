@@ -60,7 +60,7 @@ local function lsp_highlight_document(client)
 			buffer = 0,
 			callback = vim.lsp.buf.clear_references,
 		})
-		--
+		-- FIXME: deprecated
 		vim.api.nvim_exec([[
       augroup lsp_document_highlight
         autocmd! * <buffer>
@@ -113,6 +113,7 @@ local function lsp_keymaps(bufnr)
 	map("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
+-- On attach 
 M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
@@ -124,6 +125,24 @@ M.on_attach = function(client, bufnr)
 		-- buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
 		-- buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
 	end
+	if client.name == "yamlls" then
+		local uri = vim.uri_from_bufnr(bufnr)
+		-- Construct the request
+		local params = {
+						uri = uri
+		}
+		-- Send the request using Neovim's built-in LSP API
+		vim.lsp.buf_request(bufnr, 'yaml/get/jsonSchema', params, function(err, result)
+				if err then
+						print('Error:', err)
+				end
+				-- Process the response
+				local schema = vim.inspect(result)
+				-- test = schema
+				print('JSON Schema:', schema)
+		end)
+	end
+
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 	-- lsp_diagnostic(client)

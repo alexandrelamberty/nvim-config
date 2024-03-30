@@ -1,3 +1,11 @@
+-- utils.lua
+--[[
+utils.lua - Module for aggregating common functions across the code and providing additional functionality.
+
+@module utils
+
+]]--
+
 local utils = {}
 
 -- LSP
@@ -192,13 +200,15 @@ end
 function utils.open_git_repo()
 	local repository = vim.fn.system('git remote -v | awk \'{print $2}\' | uniq')
 	if repository then
-		vim.fn.system('open ' .. repository)
+		-- split repository string on first : and take second part
+		local _, repo = repository:match("([^,]+):([^,]+)")
+		vim.fn.system('open ' .. "https://github.com/" .. repo)
 	else
 		print("No remote repository found")
 	end
 end
 
--- FileSystem
+-- File System
 
 function utils.file_exists(name)
 	local f = io.open(name, "r")

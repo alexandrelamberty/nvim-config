@@ -1,0 +1,4 @@
+[submodule "config/.config/nvim/lua/ikbs"]
+	path = config/.config/nvim/lua/ikbs
+	url = https://github.com/alexandrelamberty/ikbs-nvim
+	branch = develop/beta

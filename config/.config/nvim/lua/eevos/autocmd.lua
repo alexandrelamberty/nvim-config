@@ -40,3 +40,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	group = spellGroup
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "dashboard", "lspinfo", "floaterm", "man", "help", "toggleterm" },
+	command = "set nospell",
+	group = keymapGroup
+})
+

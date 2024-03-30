@@ -74,9 +74,9 @@ This configuration use the space key as a leader key.
 
 ### Commenting
 
-You can comment text in normal and visual mode with:
+You can toggle comment text in normal and visual mode with:
 
-<kbd>leader</kbd> + <kbd>/</kbd>
+<kbd>leader</kbd> + <kbd>/</kbd> 
 
 ### Moving text
 
@@ -150,5 +150,5 @@ Normal mode keybindings:
 | `x`|              Cut                        |nvim-tree-api.fs.cut()|
 | `y`|              Copy Name                  |nvim-tree-api.fs.copy.filename()|
 | `Y`|              Copy Relative Path         |nvim-tree-api.fs.copy.relative_path()|
-| `<2-Left|Mouse>`  | Open                       |nvim-tree-api.node.open.edit()|
-| `<2-Righ|tMouse>` | CD | nvim-tree-api.tree.change_root_to_node()|
+| `<2-Left Mouse>`  | Open                       |nvim-tree-api.node.open.edit()|
+| `<2-Righ tMouse>` | CD | nvim-tree-api.tree.change_root_to_node()|

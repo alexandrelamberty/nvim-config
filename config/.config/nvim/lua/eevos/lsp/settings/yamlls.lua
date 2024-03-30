@@ -14,7 +14,12 @@ local opts = {
 			},
 			schemas = {
 				['http://json.schemastore.org/prettierrc'] = '.prettierrc.{yml,yaml}',
-				['http://json.schemastore.org/stylelintrc'] = '.stylelintrc.{yml,yaml}'
+				['http://json.schemastore.org/stylelintrc'] = '.stylelintrc.{yml,yaml}',
+				['https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json'] = 'docker-compose*.{yml,yaml}',
+				-- OpenAPI
+				-- https://github.com/OAI/OpenAPI-Specification/tree/main/schemas
+				-- ['https://spec.openapis.org/oas/3.0/schema/2021-09-28'] = 'api.{yml,yaml}',
+				['https://spec.openapis.org/oas/3.1/schema/2022-10-07'] = 'api.{yml,yaml}'
 			},
 			schemaDownload = {
 				enable = true

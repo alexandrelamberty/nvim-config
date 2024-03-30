@@ -3,7 +3,8 @@
 
 -- Core
 require 'eevos.settings'
-require 'eevos.autocommand'
+require 'eevos.autocmd'
+require 'eevos.command'
 require 'eevos.diagnostic'
 require 'eevos.keymap'
 require 'eevos.utils'
@@ -17,6 +18,7 @@ require 'eevos.plugins.comment'
 require 'eevos.plugins.emmet'
 require 'eevos.plugins.galaxyline'
 require 'eevos.plugins.gitsigns'
+-- require 'eevos.plugins.ikbs'
 require 'eevos.plugins.material'
 require 'eevos.plugins.mason'
 require 'eevos.plugins.mason-lspconfig'
@@ -30,8 +32,6 @@ require 'eevos.plugins.telescope'
 require "eevos.plugins.toggleterm"
 require 'eevos.plugins.treesitter'
 require 'eevos.plugins.whichkey'
-
-require 'ikbs-nvim'
 
 -- LSP
 require "eevos.lsp"

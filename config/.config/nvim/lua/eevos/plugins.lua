@@ -1,3 +1,7 @@
+-- plugins
+-- @module plugins
+-- @see https://github.com/wbthomason/packer.nvim
+
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
@@ -51,6 +55,7 @@ return require("packer").startup(function(use)
 	-- Debugging
 	use "mfussenegger/nvim-dap"
 	use "rcarriga/nvim-dap-ui"
+	use "nvim-neotest/nvim-nio"
 
 	-- File Explorer
 	use "kevinhwang91/rnvimr"
@@ -71,6 +76,9 @@ return require("packer").startup(function(use)
 			'nvim-lua/plenary.nvim'
 		}
 	}
+
+	-- IKBS
+	-- use { "alexandrelamberty/ikbs-nvim", branch = 'develop/beta'}
 
 	-- Harpoon
 	use "ThePrimeagen/harpoon"
@@ -108,10 +116,10 @@ return require("packer").startup(function(use)
 	use "kishikaisei/telescope-js-package-scripts.nvim"
 
 	-- Treesitter
-	-- use {
-	-- 	"nvim-treesitter/nvim-treesitter",
-	-- 	run = ":TSUpdate"
-	-- }
+	use {
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate"
+	}
 	use({
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
@@ -128,8 +136,8 @@ return require("packer").startup(function(use)
 
 	-- Utils
 	use "nvim-lua/popup.nvim"
-	use "nvim-lua/plenary.nvim"
-
+	use "nvim-lua/plenary.nvim" --  https://github.com/nvim-lua/popup.nvim
+	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
 		require('packer').sync()
 	end
