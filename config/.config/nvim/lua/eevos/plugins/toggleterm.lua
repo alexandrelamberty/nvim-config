@@ -36,47 +36,42 @@ function _G.set_terminal_keymaps()
   vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
 end
 
+vim.g.toggleterm_terminal = 'alacritty'
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
 local lua = Terminal:new({ cmd = "lua", hidden = true })
-
 function _LUA_TOGGLE()
 	lua:toggle()
 end
 
 local node = Terminal:new({ cmd = "node", hidden = true })
-
 function _NODE_TOGGLE()
 	node:toggle()
 end
 
 local python = Terminal:new({ cmd = "python", hidden = true })
-
 function _PYTHON_TOGGLE()
 	python:toggle()
 end
 
 local mysql = Terminal:new({ cmd = "mysql", hidden = true })
-
 function _MYSQL_TOGGLE()
 	mysql:toggle()
 end
 
 local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
-
 function _NCDU_TOGGLE()
 	ncdu:toggle()
 end
 
 local htop = Terminal:new({ cmd = "htop", hidden = true })
-
 function _HTOP_TOGGLE()
 	htop:toggle()
 end

@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 local fileGroup = vim.api.nvim_create_augroup("_FileType", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
-	command = "setlocal wrap'",
+	command = "setlocal wrap",
 	group = fileGroup
 })
 

@@ -15,7 +15,9 @@ require 'eevos.plugins' -- need to be first
 require 'eevos.plugins.autopairs'
 require 'eevos.plugins.cmp'
 require 'eevos.plugins.comment'
+require 'eevos.plugins.colorizer'
 require 'eevos.plugins.emmet'
+require 'eevos.plugins.formatter'
 require 'eevos.plugins.galaxyline'
 require 'eevos.plugins.gitsigns'
 -- require 'eevos.plugins.ikbs'
@@ -37,4 +39,4 @@ require 'eevos.plugins.whichkey'
 require "eevos.lsp"
 
 -- DAP
-require "eevos.dap"
+-- require "eevos.dap"

@@ -2,9 +2,6 @@
 -- https://github.com/williamboman/mason-lspconfig.nvim
 local servers = require('eevos.plugins.nvim-lspconfig-servers')
 require('mason-lspconfig').setup({
-	-- Replace the language servers listed here
-	-- with the ones you want to install
-
 	-- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 	ensure_installed = servers,
 	automatic_installation = false, -- TODO: Check this to use lsp-config settings ?

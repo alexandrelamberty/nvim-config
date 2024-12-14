@@ -2,26 +2,6 @@
 
 Setup for everyday text editing and programming.
 
-## Roadmap
-
-## Roadmap v 0.0.1
-
-- [ ] Completion
-- [ ] Spelling
-- [ ] Snippet
-- [ ] LSP
-- [ ] DAP
-
-## Features
-
-- Explorer
-- File Manager
-= Git
-- Terminal
-- Status line
-- Language Server Protocol
-- Debug Adapter Protocol
-
 ## Requirements
 
 - [NVIM]() v0.8.0
@@ -33,31 +13,31 @@ The installation script require [stow](https://www.gnu.org/software/stow/manual/
 
 > Running the script will remove the `$HOME/.config/nvim` directory!
 
-Run the `ìnstall.sh` script
+- Run the `ìnstall.sh` script
 
 ```shell
 ./install
 ```
 
-Launch Neovim
+- Launch Neovim
 
 ```shell
 nvim
 ```
 
-and run the command to install the plugins dependencies.
+- Run the command to install the plugins dependencies.
 
 ```vim
 :PackerInstall
 ```
 
-Verify that all the plugins have been correctly installed:
+- Verify that all the plugins have been correctly installed:
 
 ```vim
 :PackerStatus
 ```
 
-Verify the Neovim health:
+- Verify the Neovim health:
 
 ```vim
 :CheckHealth
@@ -70,28 +50,80 @@ Each plugins has it's own configuration in `lua.eevos.plugins`
 
 ## Keybindings
 
-This configuration use the space key as a leader key. 
+This configuration use the <kbd>space</kbd> key as the leader key. 
 
 ### Commenting
 
 You can toggle comment text in normal and visual mode with:
 
-<kbd>leader</kbd> + <kbd>/</kbd> 
+<kbd>leader</kbd> <kbd>/</kbd> 
 
 ### Moving text
 
+Move selected line / block of text:
+
+| MODE | KEY | FUNCTION |
+|-|-|-
+| `normal` / `visual` | <kbd>K</kbd> | Move up | 
+| `normal` / `visual` | <kbd>J</kbd> | Move down | 
+
+### Indentation
+
+| MODE | KEY | FUNCTION |
+|-|-|-
+| `normal` / `visual` | <kbd><</kbd> | Indent left | 
+| `normal` / `visual` | <kbd>></kbd> | Indent right | 
+
+### Page up and down
+
 ### LSP
+
+Language Server Protocol is used to communicate with the LSP server.
+
+Code source:
+
+| KEY | FUNCTION |
+|-|-
+| <kbd>g</kbd> <kbd>D</kbd> | Go to declaration | 
+| <kbd>g</kbd> <kbd>d</kbd> | Show definition | 
+| <kbd>g</kbd> <kbd>i</kbd> | Show implementation |
+| <kbd>g</kbd> <kbd>r</kbd> | Show references |
+| <kbd>g</kbd> <kbd>t</kbd> | Show type definition |
+| <kbd>K</kbd> | Show documentation |
+| <kbd>ctrl</kbd> <kbd>k</kbd> | Show signature |
+| <kbd>leader</kbd> <kbd>r</kbd> <kbd>n</kbd> | Rename |
+| <kbd>leader</kbd> <kbd>c</kbd> <kbd>a</kbd> | Code actions |
+
+Diagnostics:
+
+| KEY | FUNCTION |
+|-|-
+| <kbd>]</kbd> <kbd>d</kbd> | Go to next diagnostic | 
+| <kbd>[</kbd> <kbd>d</kbd> | Go to previous diagnostic | 
+| <kbd>g</kbd> <kbd>l</kbd> | Show line diagnostics |
+| <kbd>leader</kbd> <kbd>q</kbd> | Show quickfix |
+| <kbd>leader</kbd> <kbd>f</kbd> | Show floating diagnostics |
+
+Workspace:
+
+| KEY | FUNCTION |
+|-|-
+| <kbd>leader</kbd> <kbd>w</kbd> <kbd>a</kbd> | Add workspace |
+| <kbd>leader</kbd> <kbd>w</kbd> <kbd>r</kbd> | Remove workspace |
+| <kbd>leader</kbd> <kbd>w</kbd> <kbd>l</kbd> | List workspace folders |
 
 ### Git Signs
 
 Git signs is used to show git status in the gutter and in the status line. It
 allows you to manipulate hunks of changes.
 
-Visual mode keybindings:
-
-
-Normal mode keybindings:
-
+| MODE | KEY | FUNCTION |
+|-|-|-
+| `normal` | <kbd>]</kbd> <kbd>c</kbd> | Next Hunk | 
+| `normal` | <kbd>[</kbd> <kbd>c</kbd> | Previous Hunk | 
+| `normal` | <kbd>leader</kbd> <kbd>t</kbd> <kbd>b</kbd> | Toggle blame |
+| `visual` | <kbd>leader</kbd> <kbd>hs</kbd> | Hunk stage |
+| `visual` | <kbd>leader</kbd> <kbd>hr</kbd> | Hunk reset |
 
 ### Tree File System Explorer
 
@@ -152,3 +184,7 @@ Normal mode keybindings:
 | `Y`|              Copy Relative Path         |nvim-tree-api.fs.copy.relative_path()|
 | `<2-Left Mouse>`  | Open                       |nvim-tree-api.node.open.edit()|
 | `<2-Righ tMouse>` | CD | nvim-tree-api.tree.change_root_to_node()|
+
+## References
+
+- <https://neovim.io/doc/>

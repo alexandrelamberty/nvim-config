@@ -88,32 +88,34 @@ local function lsp_keymaps(bufnr)
 	map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "Show implementation" })
 	map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "Show references" })
 	map('n', 'gt', vim.lsp.buf.type_definition, { desc = "Show type definition" })
-
 	map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "Show documentation" })
 	map("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", { desc = "Show signature" })
-
 	map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { desc = "Rename" })
 	map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code actions" })
 
-	map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-	map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-	map('n', '<space>wl', function()
+	-- Workspace
+	map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+	map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+	map('n', '<leader>wl', function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, opts)
 
 	-- Diagnostic
-	map("n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 	opts.desc = "Show line diagnostics"
+	map("n", "gl", '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+	opts.desc = "Open float diagnostics"
+	-- FIXME: conflict keymaps with whichkey fold
 	map("n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	opts.desc = "Go to previous diagnostic"
 	map("n", "[d", '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 	opts.desc = "Go to next diagnostic"
 	map("n", "]d", '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 	opts.desc = "Show diagnostic list"
+	-- Conflict with easy quit
 	map("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
--- On attach 
+-- On attach
 M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.server_capabilities.documentFormattingProvider = false
@@ -129,22 +131,22 @@ M.on_attach = function(client, bufnr)
 		local uri = vim.uri_from_bufnr(bufnr)
 		-- Construct the request
 		local params = {
-						uri = uri
+			uri = uri
 		}
 		-- Send the request using Neovim's built-in LSP API
 		vim.lsp.buf_request(bufnr, 'yaml/get/jsonSchema', params, function(err, result)
-				if err then
-						print('Error:', err)
-				end
-				-- Process the response
-				local schema = vim.inspect(result)
-				-- test = schema
-				print('JSON Schema:', schema)
+			if err then
+				print('Error:', err)
+			end
+			-- Process the response
+			local schema = vim.inspect(result)
+			-- test = schema
+			print('JSON Schema:', schema)
 		end)
 	end
 
-	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
+	lsp_keymaps(bufnr)
 	-- lsp_diagnostic(client)
 end
 

@@ -3,7 +3,6 @@
 
 require('gitsigns').setup {
 	signs = {
-		-- TODO: add hl to colorscheme
 		add          = {
 			hl = 'GitSignsAdd',
 			text = '▎',
@@ -18,13 +17,13 @@ require('gitsigns').setup {
 		},
 		delete       = {
 			hl = 'GitSignsDelete',
-			text = '契',
+			text = '▎',
 			numhl = 'GitSignsDeleteNr',
 			linehl = 'GitSignsDeleteLn'
 		},
 		topdelete    = {
 			hl = 'GitSignsDelete',
-			text = '契',
+			text = '▎',
 			numhl = 'GitSignsDeleteNr',
 			linehl = 'GitSignsDeleteLn'
 		},

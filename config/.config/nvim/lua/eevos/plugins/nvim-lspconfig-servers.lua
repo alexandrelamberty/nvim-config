@@ -3,22 +3,23 @@
 -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 
 local servers = {
-	-- 'bashls',
+	'bashls',
 	'clangd',
 	-- 'cmake',
-	'gopls',
-	'lua_ls',
 	'cssls',
+	'dockerls',
+	'gopls',
 	'html',
 	'jsonls',
-	'yamlls',
 	'lemminx',
-	-- 'markdownlint',
-	'dockerls',
+	'lua_ls',
+	'marksman',
 	'sqlls',
-	--
-	'tsserver',
 	'tailwindcss',
+	'tsserver',
+	'taplo',
+	'templ',
+	'yamlls',
 }
 
 return servers

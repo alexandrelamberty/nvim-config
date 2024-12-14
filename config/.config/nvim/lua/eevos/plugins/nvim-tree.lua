@@ -1,7 +1,8 @@
 -- NvimTree setup
 -- https://github.com/nvim-tree/nvim-tree.lua
 
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true, desc="Toggle comment" })
+vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>',
+	{ noremap = true, silent = true, desc = "Toggle comment" })
 
 require 'nvim-tree'.setup {
 	disable_netrw = true,
@@ -47,24 +48,37 @@ require 'nvim-tree'.setup {
 	filters = {
 		dotfiles = true,
 		custom = {}
-	}
-}
-
-vim.g.nvim_tree_icons = {
-	default = '',
-	symlink = '',
-	git = {
-		unstaged = "",
-		staged = "✓",
-		unmerged = "",
-		renamed = "➜",
-		untracked = ""
 	},
-	folder = {
-		default = "",
-		open = "",
-		empty = "",
-		empty_open = "",
-		symlink = ""
-	}
+	renderer = {
+		highlight_git = false,
+		root_folder_modifier = ":t",
+		icons = {
+			show = {
+				file = true,
+				folder = true,
+				folder_arrow = true,
+				git = true,
+			},
+			glyphs = {
+				default = "",
+				symlink = "",
+				git = {
+					unstaged = "",
+					staged = "",
+					unmerged = "",
+					renamed = "",
+					deleted = "",
+					ignored = "",
+					untracked = "",
+				},
+				folder = {
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+				},
+			},
+		},
+	},
 }

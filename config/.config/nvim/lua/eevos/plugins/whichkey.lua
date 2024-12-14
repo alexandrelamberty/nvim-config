@@ -180,25 +180,25 @@ local mappings = {
 			"Update"
 		}
 	},
-	f = {
-		name = "Fold",
-		O = {
-			"<cmd>set foldlevel=20<cr>",
-			"Open All"
-		},
-		C = {
-			"<cmd>set foldlevel=0<cr>",
-			"Close All"
-		},
-		c = {
-			"<cmd>foldclose<cr>",
-			"Close"
-		},
-		o = {
-			"<cmd>foldopen<cr>",
-			"Open"
-		}
-	},
+	-- f = {
+	-- 	name = "Fold",
+	-- 	O = {
+	-- 		"<cmd>set foldlevel=20<cr>",
+	-- 		"Open All"
+	-- 	},
+	-- 	C = {
+	-- 		"<cmd>set foldlevel=0<cr>",
+	-- 		"Close All"
+	-- 	},
+	-- 	c = {
+	-- 		"<cmd>foldclose<cr>",
+	-- 		"Close"
+	-- 	},
+	-- 	o = {
+	-- 		"<cmd>foldopen<cr>",
+	-- 		"Open"
+	-- 	}
+	-- },
 	g = {
 		name = "Git",
 		g = {
@@ -410,6 +410,10 @@ local mappings = {
 
 	t = {
 		name = "Terminal",
+		m = {
+			"<cmd>lua _MYSQL_TOGGLE()<cr>",
+			"Node"
+		},
 		n = {
 			"<cmd>lua _NODE_TOGGLE()<cr>",
 			"Node"

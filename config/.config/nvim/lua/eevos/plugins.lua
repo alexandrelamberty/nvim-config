@@ -37,6 +37,9 @@ return require("packer").startup(function(use)
 	-- Code Completion
 	use 'Exafunction/codeium.vim'
 
+	-- Colorizer
+	use 'norcalli/nvim-colorizer.lua'
+
 	-- Command palette
 	use "folke/which-key.nvim"
 
@@ -63,10 +66,17 @@ return require("packer").startup(function(use)
 	-- File Outline
 	use 'simrat39/symbols-outline.nvim'
 
+	-- Formatter
+	use "mhartington/formatter.nvim"
+
 	-- Git client
 	use {
-		"TimUntersberger/neogit",
-		requires = "nvim-lua/plenary.nvim"
+		"NeogitOrg/neogit",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"sindrets/diffview.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 	}
 
 	-- Git gutter signs
@@ -85,11 +95,10 @@ return require("packer").startup(function(use)
 
 	-- LSP
 	use {
+		"neovim/nvim-lspconfig",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
 		requires = {
-			-- LSP Support
 			-- Completion
 			{ 'hrsh7th/nvim-cmp' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
@@ -137,6 +146,7 @@ return require("packer").startup(function(use)
 	-- Utils
 	use "nvim-lua/popup.nvim"
 	use "nvim-lua/plenary.nvim" --  https://github.com/nvim-lua/popup.nvim
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
 		require('packer').sync()

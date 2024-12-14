@@ -9,6 +9,8 @@ local servers = require('eevos.plugins.nvim-lspconfig-servers')
 -- https://linovox.com/configuring-language-server-protocol-lsp-in-neovim/
 local opts = {}
 for _, lsp in pairs(servers) do
+	-- print("LSP: " .. lsp)
+
 	opts = {
 		-- default LSP on_attach and capabilities, overwrite in configurations if needed.
 		on_attach = require("eevos.lsp.handlers").on_attach,

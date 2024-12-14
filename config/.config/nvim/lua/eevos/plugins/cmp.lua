@@ -2,6 +2,7 @@
 -- https://github.com/hrsh7th/nvim-cmp
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
 -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
+
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
 	return
@@ -12,6 +13,7 @@ if not snip_status_ok then
 	return
 end
 
+-- find more here: https://www.nerdfonts.com/cheat-sheet
 --   פּ ﯟ   some other good icons
 local kind_icons = {
 	Text = "",
@@ -41,7 +43,6 @@ local kind_icons = {
 	TypeParameter = ""
 }
 
--- find more here: https://www.nerdfonts.com/cheat-sheet
 cmp.setup {
 	snippet = {
 		expand = function(args)

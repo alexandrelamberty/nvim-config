@@ -6,14 +6,14 @@
 -- autocmd ColorScheme * highlight CursorLine guifg=none guibg=none
 -- autocmd ColorScheme * highlight ColorColumn guifg=none guibg=none
 -- autocmd ColorScheme * highlight LineNR cterm=none guifg=none guibg=none
--- vim.cmd('set highlight EndOfBuffer ctermbg=333333 ctermfg=333333') -- Change the ≃
+-- vim.cmd('set highlight EndOfBuffer ctermbg=333333 ctermfg=333333')
 -- autocmd ColorScheme * highlight CursorLineNr gui=bold guifg=cyan guibg=none
 
 vim.cmd([[
 augroup Global
 autocmd!
-autocmd ColorScheme * highlight EndOfBuffer guifg=#0F111A
-autocmd ColorScheme * highlight SignColumn guibg=none
+autocmd ColorScheme * highlight EndOfBuffer ctermbg=333333 ctermfg=333333 guifg=#0F111A 
+autocmd ColorScheme * highlight SignColumn guifg=#0F111A guibg=none
 augroup end
 ]])
 
@@ -52,4 +52,4 @@ augroup end
 ]])
 
 -- set the desired theme
-vim.cmd('colorscheme material') -- must be set after custom highlight
+vim.cmd('colorscheme material') -- m ust be set after custom highlight
