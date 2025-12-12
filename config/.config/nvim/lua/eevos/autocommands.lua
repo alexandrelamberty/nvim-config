@@ -24,14 +24,10 @@ if O.json.autoformat then table.insert(auto_formatters, json_format) end
 -- TODO Check utils remove function and refactor this correctly
 utils.define_augroups({
     _general_settings = {
-        {'TextYankPost', '*', 'lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})'},
+        {'TextYankPost', '*', 'lua vim.highlight.on_yank({higroup = "Search", timeout = 200})'},
         {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
         {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'VimLeavePre', '*', 'set title set titleold='}
-
-        -- {'User', 'GoyoLeave', 'lua require(\'galaxyline\').disable_galaxyline()'},
-        -- {'User', 'GoyoEnter', 'lua require(\'galaxyline\').galaxyline_augroup()'},
     },
     _dashboard = {
         -- seems to be nobuflisted that makes my stuff disapear will do more testing
@@ -56,3 +52,5 @@ utils.define_augroups({
     },
     _auto_formatters = auto_formatters
 })
+
+

@@ -1,50 +1,61 @@
--- Settings for Global variables, Global options and Window options
-TERMINAL = vim.fn.expand('$TERMINAL')
+-- Core editor settings shared by the entire configuration.
+-- Everything is declared in Lua instead of :set commands so the intent is
+-- easier to read and maintain.
 
--- Setters
-vim.cmd('set iskeyword+=-') -- treat dash separated words as a word text object"
--- vim.cmd('set shortmess+=c') -- Don't pass messages to |ins-completion-menu|.
-vim.cmd('set inccommand=split') -- Make substitution work in realtime
-vim.cmd('set whichwrap+=<,>,[,],h,l') -- move to next line with theses keys
-vim.cmd('syntax on') -- Set syntax highlights on
-vim.cmd('set colorcolumn=99999') -- fix indentline for now
-vim.cmd('set ts=4') -- Insert 2 spaces for a tab
-vim.cmd('set sw=2') -- Change the number of space characters inserted for indentation
--- vim.cmd('set highlight EndOfBuffer ctermbg=333333 ctermfg=333333') -- Change the ≃
+local g = vim.g
+local o = vim.o
+local opt = vim.opt
+local wo = vim.wo
+local bo = vim.bo
 
--- Global options
-vim.g.colorscheme = 'material'
-vim.g.material_theme_style = "ocean-community"
+-- Surface the terminal that launched Neovim. Some plugins use it to open
+-- external commands, so we keep it global for backwards compatibility.
+_G.TERMINAL = vim.env.TERMINAL or ""
 
--- Options
-vim.o.termguicolors = true -- set term giu colors most terminals support this
-vim.o.hidden = true -- Required to keep multiple buffers open multiple buffers
-vim.o.title = true -- Terminal title
-vim.o.titlestring = "%F"
-vim.o.pumheight = 10 -- Makes popup menu smaller
-vim.o.fileencoding = "utf-8" -- The encoding written to file
-vim.o.laststatus = 3 -- Single status bar Neovim 8.0
--- vim.o.cmdheight = 1 -- More space for displaying messages
-vim.o.mouse = "a" -- Enable your mouse
-vim.o.splitbelow = true -- Horizontal splits will automatically be below
-vim.o.splitright = true -- Vertical splits will automatically be to the right
-vim.o.conceallevel = 0 -- So that I can see `` in markdown files
-vim.o.showtabline = 0 -- Always show tabs
-vim.o.showmode = true -- We don't need to see things like -- INSERT -- anymore
--- TODO: Check backup workflow, change dirs
-vim.opt.backup = false -- This is recommended by coc
-vim.o.writebackup = false -- This is recommended by coc
-vim.o.updatetime = 300 -- Faster completion
-vim.o.timeoutlen = 100 -- By default timeoutlen is 1000 ms
-vim.o.clipboard = "unnamedplus" -- Copy paste between vim and everything else
+-- Providers / syntax --------------------------------------------------------
+g.loaded_perl_provider = 0
+vim.cmd.syntax("on")
 
--- Buffer options
-vim.bo.expandtab = true -- Converts tabs to spaces
-vim.bo.smartindent = true -- Makes indenting smart
+-- Text objects & command UX -------------------------------------------------
+opt.iskeyword:append("-") -- treat dash separated words as one word
+opt.inccommand = "split" -- incremental substitute preview
+opt.whichwrap:append("<,>,[,],h,l") -- wrap cursor movement keys
+opt.shortmess:append("c") -- keep completion quiet
+opt.colorcolumn = "99999" -- workaround for indent guides bleeding
+opt.tabstop = 2
+opt.shiftwidth = 2
 
--- Window options
-vim.wo.wrap = true -- Display long lines as just one line
-vim.wo.number = true -- set numbered lines
-vim.wo.relativenumber = true -- set relative number
-vim.wo.cursorline = true -- Enable highlighting of the current line
-vim.wo.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+-- Global options ------------------------------------------------------------
+g.mapleader = " "
+g.material_style = "deep ocean"
+
+o.termguicolors = true
+o.hidden = true
+o.title = true
+o.titlestring = "%F"
+o.pumheight = 10
+o.fileencoding = "utf-8"
+o.laststatus = 3
+o.cmdheight = 0
+o.mouse = "a"
+o.splitbelow = true
+o.splitright = true
+o.conceallevel = 0
+o.showtabline = 0
+o.showmode = true
+opt.backup = false
+o.writebackup = false
+o.updatetime = 300
+o.timeoutlen = 100
+o.clipboard = "unnamedplus"
+
+-- Buffer options ------------------------------------------------------------
+bo.expandtab = true
+bo.smartindent = true
+
+-- Window options ------------------------------------------------------------
+wo.wrap = true
+wo.number = true
+wo.relativenumber = true
+wo.cursorline = true
+wo.signcolumn = "yes"
