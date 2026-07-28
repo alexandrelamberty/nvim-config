@@ -1,203 +1,162 @@
 local handlers = {}
 
+local lsp = vim.lsp.buf
+local diag = vim.diagnostic
+
+-- ============================================================================
 -- LSP Buffer
+-- ============================================================================
 
-function handlers.add_to_workspace_folder()
-    vim.lsp.buf.add_workspace_folder()
+handlers.add_to_workspace_folder     = lsp.add_workspace_folder
+handlers.clear_references            = lsp.clear_references
+handlers.code_action                 = lsp.code_action
+handlers.document_highlight          = lsp.document_highlight
+handlers.document_symbol             = lsp.document_symbol
+handlers.hover                       = lsp.hover
+handlers.implementation              = lsp.implementation
+handlers.incoming_calls              = lsp.incoming_calls
+handlers.list_workspace_folders      = lsp.list_workspace_folders
+handlers.outgoing_calls              = lsp.outgoing_calls
+handlers.rename                      = lsp.rename
+handlers.signature_help              = lsp.signature_help
+handlers.type_definition             = lsp.type_definition
+handlers.workspace_symbol            = lsp.workspace_symbol
+
+handlers.declaration = function()
+  lsp.declaration()
+  lsp.clear_references()
 end
 
-function handlers.clear_references()
-    vim.lsp.buf.clear_references()
+handlers.definition = function()
+  lsp.definition()
+  lsp.clear_references()
 end
 
-function handlers.code_action()
-    vim.lsp.buf.code_action()
+handlers.references = function()
+  lsp.references()
+  lsp.clear_references()
 end
 
-function handlers.declaration()
-    vim.lsp.buf.declaration()
-    vim.lsp.buf.clear_references()
+handlers.format = function(opts)
+  lsp.format(opts or { timeout_ms = 1000 })
 end
 
-function handlers.definition()
-    vim.lsp.buf.definition()
-    vim.lsp.buf.clear_references()
+handlers.range_code_action = lsp.range_code_action
+
+handlers.range_format = function()
+  lsp.format({ range = true })
 end
 
-function handlers.document_highlight()
-    vim.lsp.buf.document_highlight()
+handlers.remove_workspace_folder = lsp.remove_workspace_folder
+
+-- ============================================================================
+-- Diagnostics (modern API)
+-- ============================================================================
+
+handlers.diagnostic_next       = diag.goto_next
+handlers.diagnostic_prev       = diag.goto_prev
+handlers.diagnostic_open_float = diag.open_float
+
+handlers.diagnostic_all = function()
+  return diag.get()
 end
 
-function handlers.document_symbol()
-    vim.lsp.buf.document_symbol()
+-- ============================================================================
+-- DAP (lazy & optional)
+-- ============================================================================
+
+local function dap()
+  local ok, dap = pcall(require, "dap")
+  return ok and dap or nil
 end
 
-function handlers.formatting()
-    vim.lsp.buf.formatting()
+handlers.toggle_breakpoint = function()
+  local d = dap()
+  if d then d.toggle_breakpoint() end
 end
 
-function handlers.formatting_sync()
-    vim.lsp.buf.formatting_sync()
+handlers.start = function()
+  local d = dap()
+  if d then d.run_last() end
 end
 
-function handlers.hover()
-    vim.lsp.buf.hover()
+handlers.continue = function()
+  local d = dap()
+  if d then d.continue() end
 end
 
-function handlers.implementation()
-    vim.lsp.buf.implementation()
+handlers.step_over = function()
+  local d = dap()
+  if d then d.step_over() end
 end
 
-function handlers.incoming_calls()
-    vim.lsp.buf.incoming_calls()
+handlers.step_into = function()
+  local d = dap()
+  if d then d.step_into() end
 end
 
-function handlers.list_workspace_folders()
-    vim.lsp.buf.list_workspace_folders()
+handlers.step_out = function()
+  local d = dap()
+  if d then d.step_out() end
 end
 
-function handlers.outgoing_calls()
-    vim.lsp.buf.outgoing_calls()
+handlers.toggle_repl = function()
+  local d = dap()
+  if d then d.repl.toggle() end
 end
 
-function handlers.range_code_action()
-    vim.lsp.buf.range_code_action()
+handlers.get_session = function()
+  local d = dap()
+  return d and d.session() or nil
 end
 
-function handlers.range_formatting()
-    vim.lsp.buf.range_formatting()
+-- ============================================================================
+-- GitSigns
+-- ============================================================================
+
+local function gitsigns()
+  local ok, gs = pcall(require, "gitsigns")
+  return ok and gs or nil
 end
 
-function handlers.references()
-    vim.lsp.buf.references()
-    vim.lsp.buf.clear_references()
+handlers.next_hunk = function()
+  local gs = gitsigns()
+  if gs then gs.next_hunk() end
 end
 
-function handlers.remove_workspace_folder()
-    vim.lsp.buf.remove_workspace_folder()
+handlers.prev_hunk = function()
+  local gs = gitsigns()
+  if gs then gs.prev_hunk() end
 end
 
-function handlers.rename()
-    vim.lsp.buf.rename()
+handlers.stage_hunk = function()
+  local gs = gitsigns()
+  if gs then gs.stage_hunk() end
 end
 
-function handlers.signature_help()
-    vim.lsp.buf.signature_help()
+handlers.undo_stage_hunk = function()
+  local gs = gitsigns()
+  if gs then gs.undo_stage_hunk() end
 end
 
-function handlers.type_definition()
-    vim.lsp.buf.type_definition()
+handlers.reset_hunk = function()
+  local gs = gitsigns()
+  if gs then gs.reset_hunk() end
 end
 
-function handlers.workspace_symbol()
-    vim.lsp.buf.workspace_symbol()
+handlers.reset_buffer = function()
+  local gs = gitsigns()
+  if gs then gs.reset_buffer() end
 end
 
--- LSP Diagnostic
-
-function handlers.get_all()
-    vim.lsp.diagnostic.get_all()
+handlers.preview_hunk = function()
+  local gs = gitsigns()
+  if gs then gs.preview_hunk() end
 end
 
-function handlers.get_next()
-    vim.lsp.diagnostic.get_next()
-end
-
-function handlers.get_prev()
-    vim.lsp.diagnostic.get_prev()
-end
-
-function handlers.goto_next()
-    vim.lsp.diagnostic.goto_next()
-end
-
-function handlers.goto_prev()
-    vim.lsp.diagnostic.goto_prev()
-end
-
-function handlers.show_line_diagnostics()
-    vim.lsp.diagnostic.show_line_diagnostics()
-end
-
--- DAP
-
-function handlers.toggle_breakpoint()
-
-end
-
-function handlers.start()
-
-end
-
-function handlers.continue()
-
-end
-
-function handlers.step_over()
-
-end
-
-function handlers.step_out()
-
-end
-
-function handlers.step_into()
-
-end
-
-function handlers.toggle_repl()
-
-end
-
-function handlers.get_session()
-
-end
-
--- Git Signs
-
-function handlers.next_hunk()
-    require('gitsigns').next_hunk()
-end
-
-function handlers.prev_hunk()
-    require('gitsigns').prev_hunk()
-end
-
-function handlers.stage_hunk()
-    require('gitsigns').stage_hunk()
-end
-
-function handlers.undo_stage_hunk()
-    require('gitsigns').undo_stage_hunk()
-end
-
-function handlers.reset_hunk()
-    require('gitsigns').reset_hunk()
-end
-
-function handlers.reset_buffer()
-    require('gitsigns').reset_buffer()
-end
-
-function handlers.preview_hunk()
-    require('gitsigns').preview_hunk()
-end
-
-function handlers.blame_line()
-    require('gitsigns').blame_line()
-end
-
--- Misc
-
-function handlers.file_exists(name)
-    local f = io.open(name, "r")
-    if f ~= nil then
-        io.close(f)
-        return true
-    else
-        return false
-    end
+handlers.blame_line = function()
+  local gs = gitsigns()
+  if gs then gs.blame_line() end
 end
 
 return handlers
-

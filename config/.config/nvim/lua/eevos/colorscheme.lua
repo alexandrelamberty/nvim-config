@@ -1,30 +1,65 @@
---- vim.cmd('let g:nvim_termcolors=256')
-vim.cmd('colorscheme material-deep-ocean')
+-- ============================================================================
+-- Colorscheme & highlights
+-- ============================================================================
 
-vim.cmd([[
-augroup GitSigns
-autocmd!
-autocmd ColorScheme * highlight SignColumn guibg=#193549
-autocmd ColorScheme * highlight GitSignsAdd guibg=#193549 guifg=#3ad900
-autocmd ColorScheme * highlight GitSignsChange guibg=#193549 guifg=#ffc600
-autocmd ColorScheme * highlight GitSignsDelete guibg=#193549 guifg=#ff2600
-autocmd ColorScheme * highlight ColorColumn guifg=NONE guibg=#204563 gui=NONE
-augroup end
-]])
+local api = vim.api
 
-vim.cmd([[
-augroup EndOfBuffer
-autocmd!
-autocmd ColorScheme * highlight EndOfBuffer guifg=#0F111A ctermfg=#0F111A
-augroup end
-]])
+-- ----------------------------------------------------------------------------
+-- Colorscheme
+-- ----------------------------------------------------------------------------
 
-vim.cmd [[
-  highlight TelescopeNormal guibg=#1e222a guifg=#c8d0e0
-  highlight TelescopeBorder guibg=#1e222a guifg=#3b4048
-  highlight TelescopeSelection guibg=#3b4048 guifg=#ffffff
-]]
+-- The active colorscheme is applied by eevos.theme.
 
---- vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "#16161e" })
---- vim.api.nvim_set_hl(0, "NvimTreeNormalNC", { bg = "#16161e" })
+-- ----------------------------------------------------------------------------
+-- Helpers
+-- ----------------------------------------------------------------------------
 
+local function augroup(name)
+  return api.nvim_create_augroup(name, { clear = true })
+end
+
+local function hl(name, opts)
+  api.nvim_set_hl(0, name, opts)
+end
+
+-- ----------------------------------------------------------------------------
+-- GitSigns highlights (reapplied on ColorScheme)
+-- ----------------------------------------------------------------------------
+
+api.nvim_create_autocmd("ColorScheme", {
+  group = augroup("gitsigns_highlights"),
+  callback = function()
+    hl("SignColumn",      { bg = "#193549" })
+    hl("GitSignsAdd",     { bg = "#193549", fg = "#3ad900" })
+    hl("GitSignsChange",  { bg = "#193549", fg = "#ffc600" })
+    hl("GitSignsDelete",  { bg = "#193549", fg = "#ff2600" })
+    hl("ColorColumn",     { bg = "#204563", fg = "NONE" })
+  end,
+})
+
+-- ----------------------------------------------------------------------------
+-- EndOfBuffer
+-- ----------------------------------------------------------------------------
+
+api.nvim_create_autocmd("ColorScheme", {
+  group = augroup("end_of_buffer"),
+  callback = function()
+    hl("EndOfBuffer", { fg = "#0F111A" })
+  end,
+})
+
+-- ----------------------------------------------------------------------------
+-- Telescope
+-- ----------------------------------------------------------------------------
+-- These don't *need* a ColorScheme autocmd, but it doesn't hurt either.
+-- Keeping them static is fine if you never change colorschemes at runtime.
+
+hl("TelescopeNormal",    { bg = "#1e222a", fg = "#c8d0e0" })
+hl("TelescopeBorder",    { bg = "#1e222a", fg = "#3b4048" })
+hl("TelescopeSelection", { bg = "#3b4048", fg = "#ffffff" })
+
+-- ----------------------------------------------------------------------------
+-- Optional: NvimTree (kept commented as in original)
+-- ----------------------------------------------------------------------------
+-- hl("NvimTreeNormal",   { bg = "#16161e" })
+-- hl("NvimTreeNormalNC", { bg = "#16161e" })

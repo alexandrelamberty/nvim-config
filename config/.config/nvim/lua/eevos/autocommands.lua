@@ -1,56 +1,157 @@
-	-- TODO: Need to test if the commands works
--- TODO: Explore more of what you could do
--- Check augroups ???
-local utils = require('eevos.utils')
+-- ============================================================================
+-- Autocommands
+-- Modern Lua-based implementation
+-- ============================================================================
 
-local auto_formatters = {}
+local api = vim.api
+local handlers = require("eevos.handlers")
 
-local python_autoformat = {'BufWritePre', '*.py', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
-if O.python.autoformat then table.insert(auto_formatters, python_autoformat) end
+-- ----------------------------------------------------------------------------
+-- Helpers
+-- ----------------------------------------------------------------------------
 
-local javascript_autoformat = {'BufWritePre', '*.js', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
-local javascriptreact_autoformat = {'BufWritePre', '*.jsx', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
-if O.tsserver.autoformat then
-    table.insert(auto_formatters, javascript_autoformat)
-    table.insert(auto_formatters, javascriptreact_autoformat)
+local function augroup(name)
+  return api.nvim_create_augroup(name, { clear = true })
 end
 
-local lua_format = {'BufWritePost', '*.lua', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
-if O.lua.autoformat then table.insert(auto_formatters, lua_format) end
+-- ----------------------------------------------------------------------------
+-- General settings
+-- ----------------------------------------------------------------------------
 
-local json_format = {'BufWritePre', '*.json', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
-if O.json.autoformat then table.insert(auto_formatters, json_format) end
-
--- TODO Check utils remove function and refactor this correctly
-utils.define_augroups({
-    _general_settings = {
-        {'TextYankPost', '*', 'lua vim.highlight.on_yank({higroup = "Search", timeout = 200})'},
-        {'BufWinEnter', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'BufRead', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-        {'BufNewFile', '*', 'setlocal formatoptions-=c formatoptions-=r formatoptions-=o'},
-    },
-    _dashboard = {
-        -- seems to be nobuflisted that makes my stuff disapear will do more testing
-        {
-            'FileType', 'dashboard',
-            'setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell  nolist  nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= '
-        }, {'FileType', 'dashboard', 'set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2'}
-    },
-    _markdown = {{'FileType', 'markdown', 'setlocal wrap'}, {'FileType', 'markdown', 'setlocal spell'}},
-    _solidity = {
-        {'BufWinEnter', '.sol', 'setlocal filetype=solidity'}, {'BufRead', '*.sol', 'setlocal filetype=solidity'},
-        {'BufNewFile', '*.sol', 'setlocal filetype=solidity'}
-    },
-    _gemini = {
-        {'BufWinEnter', '.gmi', 'setlocal filetype=markdown'}, {'BufRead', '*.gmi', 'setlocal filetype=markdown'},
-        {'BufNewFile', '*.gmi', 'setlocal filetype=markdown'}
-    },
-    _buffer_bindings = {
-        {'FileType', 'dashboard', 'nnoremap <silent> <buffer> q :q<CR>'},
-        {'FileType', 'lspinfo', 'nnoremap <silent> <buffer> q :q<CR>'},
-        {'FileType', 'floaterm', 'nnoremap <silent> <buffer> q :q<CR>'}
-    },
-    _auto_formatters = auto_formatters
+api.nvim_create_autocmd("TextYankPost", {
+  group = augroup("general_yank"),
+  callback = function()
+    vim.highlight.on_yank({ higroup = "Search", timeout = 200 })
+  end,
 })
 
+api.nvim_create_autocmd({ "BufWinEnter", "BufRead", "BufNewFile" }, {
+  group = augroup("general_formatoptions"),
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+  end,
+})
 
+-- ----------------------------------------------------------------------------
+-- Dashboard
+-- ----------------------------------------------------------------------------
+
+api.nvim_create_autocmd("FileType", {
+  group = augroup("dashboard"),
+  pattern = "dashboard",
+  callback = function()
+    vim.opt_local.cursorline = false
+    vim.opt_local.swapfile = false
+    vim.opt_local.signcolumn = "no"
+    vim.opt_local.relativenumber = false
+    vim.opt_local.number = false
+    vim.opt_local.cursorcolumn = false
+    vim.opt_local.spell = false
+    vim.opt_local.list = false
+    vim.opt_local.bufhidden = "wipe"
+    vim.opt_local.colorcolumn = ""
+    vim.opt_local.foldcolumn = "0"
+    vim.opt_local.matchpairs = ""
+
+    vim.opt.showtabline = 0
+
+    api.nvim_create_autocmd("BufLeave", {
+      buffer = 0,
+      once = true,
+      callback = function()
+        vim.opt.showtabline = 2
+      end,
+    })
+  end,
+})
+
+-- ----------------------------------------------------------------------------
+-- Markdown
+-- ----------------------------------------------------------------------------
+
+api.nvim_create_autocmd("FileType", {
+  group = augroup("markdown"),
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
+})
+
+-- ----------------------------------------------------------------------------
+-- Filetype fixes
+-- ----------------------------------------------------------------------------
+
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = augroup("solidity"),
+  pattern = "*.sol",
+  callback = function()
+    vim.bo.filetype = "solidity"
+  end,
+})
+
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = augroup("gemini"),
+  pattern = "*.gmi",
+  callback = function()
+    vim.bo.filetype = "markdown"
+  end,
+})
+
+-- ----------------------------------------------------------------------------
+-- Buffer-local bindings
+-- ----------------------------------------------------------------------------
+
+api.nvim_create_autocmd("FileType", {
+  group = augroup("buffer_q"),
+  pattern = { "dashboard", "lspinfo", "floaterm" },
+  callback = function()
+    vim.keymap.set("n", "q", "<cmd>q<CR>", { buffer = true, silent = true })
+  end,
+})
+
+-- ----------------------------------------------------------------------------
+-- Auto formatters
+-- ----------------------------------------------------------------------------
+
+local format_group = augroup("auto_format")
+
+if O.python.autoformat then
+  api.nvim_create_autocmd("BufWritePre", {
+    group = format_group,
+    pattern = "*.py",
+    callback = function()
+      handlers.format()
+    end,
+  })
+end
+
+if O.tsserver.autoformat then
+  api.nvim_create_autocmd("BufWritePre", {
+    group = format_group,
+    pattern = { "*.js", "*.jsx" },
+    callback = function()
+      handlers.format()
+    end,
+  })
+end
+
+if O.lua.autoformat then
+  api.nvim_create_autocmd("BufWritePost", {
+    group = format_group,
+    pattern = "*.lua",
+    callback = function()
+      handlers.format()
+    end,
+  })
+end
+
+if O.json.autoformat then
+  api.nvim_create_autocmd("BufWritePre", {
+    group = format_group,
+    pattern = "*.json",
+    callback = function()
+      lsp_format(1000)
+    end,
+  })
+end

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Toggle, or explicitly set, Neovim's persisted theme mode.
+
+set -euo pipefail
+
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/nvim"
+state_file="$state_dir/eevos-theme.lua"
+requested_mode="${1:-toggle}"
+name=$(sed -nE 's/.*name = "([^"]+)".*/\1/p' "$state_file" 2>/dev/null | head -n 1)
+current=$(sed -nE 's/.*mode = "([^"]+)".*/\1/p' "$state_file" 2>/dev/null | head -n 1)
+name=${name:-material}
+current=${current:-dark}
+case "$requested_mode" in toggle) [[ $current == light ]] && mode=dark || mode=light ;; light|dark) mode=$requested_mode ;; *) exit 2 ;; esac
+mkdir -p "$state_dir"
+printf 'return { name = "%s", mode = "%s" }\n' "$name" "$mode" > "$state_file"
+
+runtime_dir="${XDG_RUNTIME_DIR:-/run/user/$UID}"
+if command -v nvim >/dev/null 2>&1; then
+    while IFS= read -r socket; do
+        nvim --server "$socket" --remote-expr "execute('ThemeToggle $mode')" >/dev/null 2>&1 || true
+    done < <(find "$runtime_dir" -maxdepth 1 -type s -name 'nvim*' -print 2>/dev/null)
+fi

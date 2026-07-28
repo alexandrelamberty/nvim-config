@@ -22,7 +22,9 @@ for _, module in ipairs({
   "eevos.settings",
   "eevos.keymappings",
   "eevos.plugins",
+  "eevos.handlers",
   "eevos.colorscheme",
+  "eevos.theme",
   "eevos.utils",
   "eevos.autocommands",
 }) do
@@ -47,7 +49,6 @@ for _, module in ipairs({
   "eevos.plugins.toggleterm",
   "eevos.plugins.treesitter",
   "eevos.plugins.whichkey",
-  "eevos.plugins.notes",
 }) do
   load(module)
 end

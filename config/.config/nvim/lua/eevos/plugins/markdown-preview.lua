@@ -1,1 +1,1 @@
-vim.g.mkdp_browser = '/home/eevos/.local/bin/surf'
+vim.g.mkdp_browser = '~/.local/bin/surf'

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Persist a Neovim theme choice for the next startup.
+
+set -euo pipefail
+
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/nvim"
+state_file="$state_dir/eevos-theme.lua"
+theme=''
+
+while getopts ':t:h' option; do
+    case "$option" in
+        t) theme=$OPTARG ;;
+        h) printf 'Usage: %s [-t theme]\n' "${0##*/}"; exit 0 ;;
+        *) exit 2 ;;
+    esac
+done
+
+if [[ -z "$theme" ]]; then
+    theme=$(printf '%s\n' material catppuccin gruvbox nord one-dark-pro solarized tokyo-night | fzf --prompt='Neovim theme > ') || exit 0
+fi
+
+case "$theme" in material|catppuccin|gruvbox|nord|one-dark-pro|solarized|tokyo-night) ;; *) printf 'Unknown theme: %s\n' "$theme" >&2; exit 1 ;; esac
+mode=$(sed -nE 's/.*mode = "([^"]+)".*/\1/p' "$state_file" 2>/dev/null | head -n 1)
+mkdir -p "$state_dir"
+printf 'return { name = "%s", mode = "%s" }\n' "$theme" "${mode:-dark}" > "$state_file"
+
+runtime_dir="${XDG_RUNTIME_DIR:-/run/user/$UID}"
+if command -v nvim >/dev/null 2>&1; then
+    while IFS= read -r socket; do
+        nvim --server "$socket" --remote-expr "execute('ThemeSelect $theme')" >/dev/null 2>&1 || true
+    done < <(find "$runtime_dir" -maxdepth 1 -type s -name 'nvim*' -print 2>/dev/null)
+fi
